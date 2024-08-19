@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './auth.css';
 import { Loginfunc } from '../Utils/AllApiCals';
 import { toast } from 'react-toastify';
-import { json, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const initial = { email: "", password: "" }
 function Login() {
     const [inputData, setinputdata] = useState(initial)

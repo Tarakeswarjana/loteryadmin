@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component';
 import { useNavigate } from 'react-router-dom';
 
-import Select from 'react-select';
+// import Select from 'react-select';
 import { toast } from 'react-toastify';
 import { addService, deleteService, fetchSingleService, getAllUnits, UpdateService, viewAllCategory, viewAllService } from '../../Utils/AllApiCals';
 import Swal from 'sweetalert2';
@@ -21,8 +21,8 @@ function SubCategory() {
     const [isEdit, setisEdit] = useState(false)
     const [serviceData, setserviceData] = useState([])
     const [isModal, setisModal] = useState(false)
-    const [isLoading, setisLoading] = useState(false)
-    const [totalRow, setTotalRow] = useState(10)
+    // const [isLoading, setisLoading] = useState(false)
+    // const [totalRow, setTotalRow] = useState(10)
     const [editableId, setEditableId] = useState(null)
     const [catData, setcatData] = useState(null)
     const [unitData, setunitData] = useState(null)
@@ -229,12 +229,12 @@ function SubCategory() {
 
     //fetching Category  
 
-    const fetchAllSubCategory = async (page) => {
+    const fetchAllSubCategory = useCallback(async (page) => {
 
-        setisLoading(true)
+        // setisLoading(true)
         const res = await viewAllService(page)
         console.log(res, "uuu")
-        setTotalRow(res.total)
+        // setTotalRow(res.total)
         if (res && res.success) {
             const resarr = res.data.map((ele) => {
                 return ({
@@ -251,13 +251,13 @@ function SubCategory() {
                 )
             })
             setserviceData(resarr)
-            setisLoading(false)
+            // setisLoading(false)
 
         }
 
 
 
-    }
+    }, [])
 
 
     useEffect(() => {
@@ -265,7 +265,7 @@ function SubCategory() {
         getCategoryData(1)
         getUnitData()
 
-    }, [])
+    }, [fetchAllSubCategory])
 
 
     return (

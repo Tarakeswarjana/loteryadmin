@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component';
 import { useNavigate } from 'react-router-dom';
 
-import Select from 'react-select';
-import { addCategory, deleteCategory, fetchSingleCategoryById, UpdateCategory, viewAllCategory } from '../../Utils/AllApiCals';
+// import Select from 'react-select';
+import { addCategory, deleteCategory, viewAllCategory } from '../../Utils/AllApiCals';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 
@@ -19,12 +19,12 @@ const initialState = {
 
 function Category({ gameTime }) {
     const [fromdata, setfromdata] = useState(initialState)
-    const [isEdit, setisEdit] = useState(false)
-    const [editableId, setEditableId] = useState(null)
+    // const [isEdit, setisEdit] = useState(false)
+    // const [editableId, setEditableId] = useState(null)
     const [categorydata, setCategoryData] = useState([])
     const [isModal, setisModal] = useState(false)
-    const [isLoading, setisLoading] = useState(true);
-    const [totalrowCount, setTotalRow] = useState(true);
+    // const [isLoading, setisLoading] = useState(true);
+    // const [totalrowCount, setTotalRow] = useState(true);
     const navigate = useNavigate()
 
 
@@ -253,7 +253,7 @@ function Category({ gameTime }) {
             // }
 
 
-            setisLoading(true)
+            // setisLoading(true)
             const res = await viewAllCategory(gameTime)
 
             if (res) {
@@ -278,7 +278,7 @@ function Category({ gameTime }) {
                     })
 
                 setCategoryData(newArr)
-                setisLoading(false)
+                // setisLoading(false)
 
             }
         } catch (err) {
@@ -382,7 +382,7 @@ function Category({ gameTime }) {
 
                             handleSubmit()
 
-                        }} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 relative float-right">{isEdit ? "Edit" : "Add"}</button>
+                        }} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 relative float-right">Add</button>
                     </form>
                 </div>
             }
