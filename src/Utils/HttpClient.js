@@ -1,5 +1,4 @@
 const BASE_URL = "https://7star.in.net/hongkong/admin/api";
-const ALLOW_ORIGIN = "204.11.58.168:443";
 // const USER_TYPE = "User";
 
 
@@ -70,18 +69,18 @@ async function requestData(url, data = {}, method = "GET") {
 }
 
 
-function checkingAuth() {
-    // let token = reactLocalStorage.get("token");
-    let token = "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJTa2lsbCIsInN1YiI6IjQyZTg1YTlkYWYyYjA5Nzk4MjY1YmU1ZjUzNzU2MWI3NWRmY2Q5NDRhOThhY2NmZWNkNDk0NGMwYmIzMWVhZGUwZWEyYmViMzE3ZjEyYjc3Y2RhOGJkOTNiM2QwMmY5YmZmMWFjMDQxNDliNDM1ODM4YTczMzcwMmYzNDc2OTk1NDY3NWVjYzI1OWQ4Mzc5YzA4MDdmOGE3ZmY4NjdhODhjNjczNzdiYTA4Zjg4MWYwYmI1NDFiMTIwYTJmM2M3ZGUwIiwiYWciOiIzNDZkZGQ5YTgxNWYyNjJiOGJjYmRkMWE2NzkxYTZmZmEzYWJlMzgyYTg2ODMxMjY2ODk5YmJmNzUwNjI3NDg0ZjZhOWRkZmU1ZDFkMmE5MDE2MTFjMDM3NWRkN2MwNmZlMDBiMTRlMWYzMzk4OGUzZDk0ZWJhZTQ2OGM4NmQyNDlkYWI5NTM1Mzg1ZWRkNTM4NDg5YmRiMGJhZjE4ZTZjNjk0MDRkZDM4NzA1NGI5MDdjYmM5M2UwMzY2YjJhZjJiMmY0Y2IxNzQwMjIyN2I2M2U4NWE0NDU3YWQ4M2MwN2QwMTRmY2Y0ZGUiLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNzIyMzU0OTI5LCJleHAiOjE3MjI0NDEzMjl9.rDdF6TNlb9I011A3veBSBzapTTmwGgX-gj0M2-LBbDc"
-    if (token) {
-        return token;
-    }
-    return false;
-}
+// function checkingAuth() {
+//     // let token = reactLocalStorage.get("token");
+//     let token = "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJTa2lsbCIsInN1YiI6IjQyZTg1YTlkYWYyYjA5Nzk4MjY1YmU1ZjUzNzU2MWI3NWRmY2Q5NDRhOThhY2NmZWNkNDk0NGMwYmIzMWVhZGUwZWEyYmViMzE3ZjEyYjc3Y2RhOGJkOTNiM2QwMmY5YmZmMWFjMDQxNDliNDM1ODM4YTczMzcwMmYzNDc2OTk1NDY3NWVjYzI1OWQ4Mzc5YzA4MDdmOGE3ZmY4NjdhODhjNjczNzdiYTA4Zjg4MWYwYmI1NDFiMTIwYTJmM2M3ZGUwIiwiYWciOiIzNDZkZGQ5YTgxNWYyNjJiOGJjYmRkMWE2NzkxYTZmZmEzYWJlMzgyYTg2ODMxMjY2ODk5YmJmNzUwNjI3NDg0ZjZhOWRkZmU1ZDFkMmE5MDE2MTFjMDM3NWRkN2MwNmZlMDBiMTRlMWYzMzk4OGUzZDk0ZWJhZTQ2OGM4NmQyNDlkYWI5NTM1Mzg1ZWRkNTM4NDg5YmRiMGJhZjE4ZTZjNjk0MDRkZDM4NzA1NGI5MDdjYmM5M2UwMzY2YjJhZjJiMmY0Y2IxNzQwMjIyN2I2M2U4NWE0NDU3YWQ4M2MwN2QwMTRmY2Y0ZGUiLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNzIyMzU0OTI5LCJleHAiOjE3MjI0NDEzMjl9.rDdF6TNlb9I011A3veBSBzapTTmwGgX-gj0M2-LBbDc"
+//     if (token) {
+//         return token;
+//     }
+//     return false;
+// }
 
 
 
-export default {
+const request = {
     requestData,
 
     get,
@@ -91,3 +90,4 @@ export default {
     deletemethod,
     BASE_URL,
 };
+export default request;

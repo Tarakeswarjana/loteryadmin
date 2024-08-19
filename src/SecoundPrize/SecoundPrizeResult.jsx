@@ -15,7 +15,7 @@ const SecoundPrizeResult = ({ setLiveDraw }) => {
 
   useEffect(() => {
     const changeStatus = setTimeout(() => {
-    //   setStatus(false);
+      setStatus(false);
     }, 16000);
 
     return () => clearTimeout(changeStatus);
@@ -42,7 +42,7 @@ const SecoundPrizeResult = ({ setLiveDraw }) => {
       </div>
     </div>
   ) : (
-    <ThirdPrizeHome setLiveDraw={setLiveDraw}/>
+    <ThirdPrizeHome setLiveDraw={setLiveDraw} />
   );
 };
 

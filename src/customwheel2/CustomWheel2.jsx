@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import "./customwhell2.css";
 import SlotMechine from "../slotMechine/SlotMechine";
 import SecoundPrizeHome from "../SecoundPrize/SecoundPrizeHome";
@@ -16,7 +16,6 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
   const letterWheelRef = useRef(null);
   const digitsRef = useRef(null);
 
-  const duration = 2;
 
   useEffect(() => {
     setInputValueNumber(no);
@@ -60,8 +59,8 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
   const degree = 360 / numbers.length;
   const alphabetDeg = 360 / letters.length;
 
-  const handleRotate = () => {
-    var audio1 = new Audio(audio);
+  const handleRotate = useCallback(() => {
+    // var audio1 = new Audio(audio);
 
     const num = parseInt(inputValueNumber);
     const letterIndex = letters.indexOf(inputValueLetter.toUpperCase());
@@ -107,12 +106,12 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
         "Please enter a valid number (30-45) and letter (A, B, C, D, E, G, H, J, K, L)"
       );
     }
-  };
+  }, [inputValueNumber, inputValueLetter]);
   useEffect(() => {
     if (rotate && inputValueNumber && inputValueLetter) {
       handleRotate();
     }
-  }, [rotate, inputValueNumber, inputValueLetter]);
+  }, [rotate, inputValueNumber, inputValueLetter, handleRotate]);
 
   return status ? (
     <div className={`${zoomed ? "zoomed" : ""} h-full relative`}>

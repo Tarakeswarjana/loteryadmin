@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import "./slotMechine.css"; // Make sure to include the CSS here
 import SlotCounter from "react-slot-counter";
-const audio = require("../../src/assets/wheel-spin-click-slow-down-101152.mp3");
+// const audio = require("../../src/assets/wheel-spin-click-slow-down-101152.mp3");
 const SlotMechine = ({ duration, endNumbers, rotate }) => {
   const [isspinn, setisSpinn] = useState(false);
 
@@ -19,7 +19,7 @@ const SlotMechine = ({ duration, endNumbers, rotate }) => {
 
   const counterRef = useRef(null);
 
-  const startAnimation = () => {
+  const startAnimation = useCallback(() => {
     // var audio1 = new Audio(audio);
     // audio1.play();
 
@@ -31,11 +31,11 @@ const SlotMechine = ({ duration, endNumbers, rotate }) => {
     if (counterRef.current) {
       counterRef.current.startAnimation();
     }
-  };
+  }, [duration]);
 
   useEffect(() => {
     if (rotate && endNumbers) startAnimation();
-  }, [rotate, endNumbers]);
+  }, [rotate, endNumbers, startAnimation]);
 
   const staticStartVal = [
     <span>0</span>,

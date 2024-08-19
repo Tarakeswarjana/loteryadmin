@@ -4,7 +4,7 @@ import middle from "../images/MIDDLE.png";
 import first from "../images/first.png";
 import logo from "../images/logo.jpg";
 import CustomWheel2 from "../customwheel2/CustomWheel2";
-const beepSound = require('../assets/piep-33489-[AudioTrimmer.com].mp3')
+// const beepSound = require('../assets/piep-33489-[AudioTrimmer.com].mp3')
 
 const Main = () => {
   const [count, setCount] = useState(10);
@@ -69,7 +69,7 @@ const Main = () => {
       clearTimeout(changeColor);
       clearTimeout(Blink);
     };
-  }, []);
+  }, [count]);
 
   // Format count to always display two digits
   const formattedCount = String(count).padStart(2, "0");
