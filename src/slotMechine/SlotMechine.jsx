@@ -71,7 +71,7 @@ const SlotMechine = ({ duration, endNumbers, rotate }) => {
         </div>
         <div className="digits_dot">
           <hr className="dot" />
-          <span>SINGAPORE LOTTERIES</span>
+          <span>HONG KONG LOTTERIES</span>
           <hr className="dot" />
         </div>
       </div>

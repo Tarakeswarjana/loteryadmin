@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./customwhell2.css";
 import SlotMechine from "../slotMechine/SlotMechine";
 import SecoundPrizeHome from "../SecoundPrize/SecoundPrizeHome";
@@ -16,6 +16,7 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
   const letterWheelRef = useRef(null);
   const digitsRef = useRef(null);
 
+  const duration = 2;
 
   useEffect(() => {
     setInputValueNumber(no);
@@ -24,23 +25,23 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
 
     // Zoom after 8 seconds
     const zoomTimer = setTimeout(() => {
-      setZoomed("zoomed");
+      // setZoomed("zoomed");
     }, 7000);
 
     const scrollLettersTimer = setTimeout(() => {
       if (letterWheelRef.current) {
-        letterWheelRef.current.scrollIntoView({ behavior: "smooth" });
+        // letterWheelRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }, 16500);
 
     const digitsTimer = setTimeout(() => {
       if (digitsRef.current) {
-        digitsRef.current.scrollIntoView({ behavior: "smooth" });
+        // digitsRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }, 18000);
 
     const changeState = setTimeout(() => {
-      setStatus(false);
+      // setStatus(false);
     }, 24000);
 
     return () => {
@@ -59,8 +60,8 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
   const degree = 360 / numbers.length;
   const alphabetDeg = 360 / letters.length;
 
-  const handleRotate = useCallback(() => {
-    // var audio1 = new Audio(audio);
+  const handleRotate = () => {
+    var audio1 = new Audio(audio);
 
     const num = parseInt(inputValueNumber);
     const letterIndex = letters.indexOf(inputValueLetter.toUpperCase());
@@ -106,19 +107,19 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
         "Please enter a valid number (30-45) and letter (A, B, C, D, E, G, H, J, K, L)"
       );
     }
-  }, [inputValueNumber, inputValueLetter]);
+  };
   useEffect(() => {
     if (rotate && inputValueNumber && inputValueLetter) {
       handleRotate();
     }
-  }, [rotate, inputValueNumber, inputValueLetter, handleRotate]);
+  }, [rotate, inputValueNumber, inputValueLetter]);
 
   return status ? (
-    <div className={`${zoomed ? "zoomed" : ""} h-full relative`}>
-      <div className="flex h-full overflow-hidden">
-        <div className="w-1/3 h-full bg-gray-300 flex flex-col justify-between">
+    <div className={`${zoomed ? "zoomed" : ""} h-full relative wheel_main`}>
+      <div className="flex h-full overflow-hidden wheel_second_main">
+        <div className="w-1/3 h-full bg-gray-300 flex flex-col justify-between main_spin">
           <div className="relative">
-            <div className="w-full h-1 bg-white">
+            <div className="w-full h-1 bg-white spin_top_line">
               <hr className="h-1.5 border border-2 border-black overflow-auto circle_hr" />
             </div>
             <div className="arrow"></div>
@@ -156,8 +157,8 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
             </ul>
           </div>
 
-          <div className="relative" ref={letterWheelRef}>
-            <div className="w-full h-1 bg-white z-20">
+          <div className="relative mb-[75px]" ref={letterWheelRef}>
+            <div className="w-full h-1 bg-white z-20 spin_top_line">
               <hr className="h-1.5 border border-2 border-black overflow-auto circle_hr" />
             </div>
             <div className="letter_Arrow"></div>
@@ -191,14 +192,14 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
             </ul>
           </div>
         </div>
-        <div className="w-[35px] h-full bg-black ml-[-20px] z-10"></div>
+        <div className="w-[35px] h-full bg-black ml-[-20px] z-10 black_border"></div>
 
-        <div className="bg-black h-auto w-2/3 border-l-2" ref={digitsRef}>
+        <div className="bg-black h-auto w-2/3 border-l-2 slot_component" ref={digitsRef} >
           <SlotMechine duration={15} endNumbers={endval} setvalueStart rotate />
         </div>
       </div>
 
-      <div className="inputs">
+      <div className="inputs hidden">
         <input
           type="number"
           value={inputValueNumber}
