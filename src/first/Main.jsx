@@ -2,79 +2,84 @@ import React, { useEffect, useState } from "react";
 import "./Main.css";
 import middle from "../images/MIDDLE.png";
 import first from "../images/first.png";
-import logo from "../images/logo.jpg";
+import logo from "../images/logo/logo.png";
 import CustomWheel2 from "../customwheel2/CustomWheel2";
-// const beepSound = require('../assets/piep-33489-[AudioTrimmer.com].mp3')
+// const beepSound = require("../assets/piep-33489-[AudioTrimmer.com].mp3");
 
 const Main = () => {
   const [count, setCount] = useState(10);
   const [status, setStatus] = useState(true);
-  console.log("status", count, status);
   const [color, setColor] = useState(false);
   const [fallingText, setfallingText] = useState(false);
+  console.log("fallingText", fallingText)
   const [blink, setBlink] = useState(false);
   const [liveDraw, setLiveDraw] = useState(false);
-  console.log("liveDraw", liveDraw);
+  const [home, setHome] = useState(true);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCount((prevCount) => {
-        if (prevCount > 0) {
-          if (prevCount === 5) {
-
-            // var sound = new Audio(beepSound);
-            // sound.play();
-
+    if (!home) {
+      // Decrement the count at a 1.5-second interval
+      const interval = setInterval(() => {
+        setCount((prevCount) => {
+          if (prevCount > 0) {
+            return prevCount - 1;
+          } else {
+            clearInterval(interval);
+            setStatus(false);
+            return 0;
           }
-          return prevCount - 1;
-        } else {
-          clearInterval(interval);
-          setStatus(false);
-          return 0;
-        }
-      });
-    }, 200);
-    // }, 1500);
-
-    if (count === 0) {
-      const numberBlink = setTimeout(() => {
+        });
+      }, 1500);
+  
+      // Set state changes and timeouts based on `count`
+      if (count === 0) {
+        const numberBlink = setTimeout(() => {
+          setBlink(true);
+        }, 1800);
+  
+        // Clear timeouts to avoid memory leaks
+        return () => {
+          clearTimeout(numberBlink);
+        };
+      }
+  
+      const fallingText = setTimeout(() => {
+        setfallingText(true);
+      }, 7000);
+  
+      const changeColor = setTimeout(() => {
+        setColor(true);
+      }, 12500);
+  
+      const Blink = setTimeout(() => {
         setBlink(true);
-      }, 1800);
-
-      const changeState = setTimeout(() => {
-        setStatus(false);
-      }, 1800);
-
+      }, 13000);
+  
+      // Cleanup to avoid multiple intervals and timeouts
       return () => {
-        clearTimeout(numberBlink);
-        clearTimeout(changeState);
+        clearInterval(interval);
+        clearTimeout(fallingText);
+        clearTimeout(changeColor);
+        clearTimeout(Blink);
       };
     }
-
-    const fallingText = setTimeout(() => {
-      setfallingText(true);
-    }, 7000);
-
-    const changeColor = setTimeout(() => {
-      setColor(true);
-    }, 12500);
-
-    const Blink = setTimeout(() => {
-      setBlink(true);
-    }, 13000);
-
-    return () => {
-      clearInterval(interval);
-      clearTimeout(fallingText);
-      clearTimeout(changeColor);
-      clearTimeout(Blink);
-    };
-  }, [count]);
+  }, [home, count]); // Ensure all necessary dependencies are included
+  
 
   // Format count to always display two digits
   const formattedCount = String(count).padStart(2, "0");
 
-  return (
+  return home ? (
+    <div className="home_main_div">
+      <button
+        type="button"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+        onClick={() => setHome(false)}
+      >
+        Play
+      </button>
+    </div>
+  ) : (
     <div className="main_div">
       {/* top */}
       <div className="flex justify-around pt-4">
@@ -95,7 +100,7 @@ const Main = () => {
         </div>
       </div>
       {/* middle */}
-      <div className="mt-4 w-[96%] h-[665px] mx-auto flex justify-between ">
+      <div className="mt-4 w-[96%] h-[75vh] mx-auto flex justify-between ">
         <div className="w-[50px] h-[100%] flex justify-between items-center mr-2 ">
           <div className="w-full h-[90%] flex flex-col justify-evenly items-center text-black text-5xl rounded rounded-full font-bold">
             <p className="pxwell font-extrabold">P</p>
@@ -130,28 +135,30 @@ const Main = () => {
               </ul>
             </div>
             {/* {fallingText && ( */}
-               <div className={`fall_blink_text `}>
-               <h4 className="text-9xl font-extrabold mt-8 mb-8 blink_text ">
-                 <div
-                   className={`word  ${color ? "colorChange" : ""} ${
-                     blink ? "blink" : ""
-                   }  ${fallingText ? "block" : "hidden"}`}
-                 >
-                   <span>P</span>
-                   <span>X</span>
-                   <span>W</span>
-                   <span>E</span>
-                   <span>L</span>
-                   <span>L</span>
-                 </div>
-               </h4>
-             </div>
+            <div className="fall_blink_text ">
+              <h4 className="text-9xl font-extrabold mt-8 mb-8 blink_text ">
+                <div
+                  className={`word ${fallingText ? "block" : "hidden"} ${color ? "colorChange" : ""} ${
+                    blink ? "blink" : ""
+                  }  bg-white`}
+                  
+                >
+                  <span>P</span>
+                  <span>X</span>
+                  <span>W</span>
+                  <span>E</span>
+                  <span>L</span>
+                  <span>L</span>
+                </div>
+              </h4>
+            </div>
             {/* )} */}
-            <div className="flex justify-center items-center mt-[35%]">
+            <div className="flex justify-center items-center mt-[27%]">
               <div className={`h-[81px] w-24 bg-white text-black text-7xl `}>
                 <span
-                  className={`${formattedCount === "00" ? (blink ? "blink" : "") : ""
-                    }`}
+                  className={`${
+                    formattedCount === "00" ? (blink ? "blink" : "") : ""
+                  }`}
                 >
                   00
                 </span>
@@ -160,8 +167,9 @@ const Main = () => {
                 className={`h-[81px] w-24 bg-white text-black text-7xl ml-2 `}
               >
                 <span
-                  className={`${formattedCount === "00" ? (blink ? "blink" : "") : ""
-                    }`}
+                  className={`${
+                    formattedCount === "00" ? (blink ? "blink" : "") : ""
+                  }`}
                 >
                   {formattedCount}
                 </span>
@@ -208,7 +216,7 @@ const Main = () => {
           </p>
         </div>
         <div className="">
-          <img className="logo" src={logo} alt="middle" />
+          <img className="bottom_logo" src={logo} alt="middle" />
         </div>
         <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-56 h-12">
           <p className="w-full flex justify-center items-center bg-red-700 text-white rounded rounded-full font-bold">
