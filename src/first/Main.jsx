@@ -8,48 +8,92 @@ import CustomWheel2 from "../customwheel2/CustomWheel2";
 
 const Main = () => {
   const [count, setCount] = useState(10);
-  const [status, setStatus] = useState(true);
-  console.log("status", count, status);
+  const [status, setStatus] = useState(false);
   const [color, setColor] = useState(false);
   const [fallingText, setfallingText] = useState(false);
   const [blink, setBlink] = useState(false);
+  console.log("status", status, blink);
   const [liveDraw, setLiveDraw] = useState(false);
   console.log("liveDraw", liveDraw);
+
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCount((prevCount) => {
+  //       if (prevCount > 0) {
+  //         return prevCount - 1;
+  //       } else {
+  //         clearInterval(interval);
+  //         setStatus(false);
+  //         return 0;
+  //       }
+  //     });
+  //   }, 1500);
+  //   // }, 1500);
+
+  //   if (count === 0) {
+  //     const numberBlink = setTimeout(() => {
+  //       setBlink(true);
+  //     }, 1800);
+
+  //     const changeState = setTimeout(() => {
+  //       // setStatus(false); 
+  //     }, 1800);
+
+  //     return () => {
+  //       clearTimeout(numberBlink);
+  //       clearTimeout(changeState);
+  //     };
+  //   }
+
+  //   const fallingText = setTimeout(() => {
+  //     setfallingText(true);
+  //   }, 7000);
+
+  //   const changeColor = setTimeout(() => {
+  //     setColor(true);
+  //   }, 12500);
+
+  //   const Blink = setTimeout(() => {
+  //     setBlink(true);
+  //   }, 13000);
+
+  //   return () => {
+  //     clearInterval(interval);
+  //     clearTimeout(fallingText);
+  //     clearTimeout(changeColor);
+  //     clearTimeout(Blink);
+  //   };
+  // }, [count]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCount((prevCount) => {
         if (prevCount > 0) {
-          if (prevCount === 5) {
-
-            // var sound = new Audio(beepSound);
-            // sound.play();
-
-          }
           return prevCount - 1;
         } else {
           clearInterval(interval);
-          setStatus(false);
+          // setStatus(false);
           return 0;
         }
       });
-    }, 200);
+    }, 1500);
     // }, 1500);
 
-    if (count === 0) {
-      const numberBlink = setTimeout(() => {
-        setBlink(true);
-      }, 1800);
+    // if (count === 0) {
+    //   const numberBlink = setTimeout(() => {
+    //     // setStatus(true);
+    //     // setBlink(true);
+    //   }, 1800);
 
-      const changeState = setTimeout(() => {
-        setStatus(false);
-      }, 1800);
+    //   const changeState = setTimeout(() => {
+    //     setStatus(true);
+    //   }, 1800);
 
-      return () => {
-        clearTimeout(numberBlink);
-        clearTimeout(changeState);
-      };
-    }
+    //   return () => {
+    //     clearTimeout(numberBlink);
+    //     clearTimeout(changeState);
+    //   };
+    // }
 
     const fallingText = setTimeout(() => {
       setfallingText(true);
@@ -63,13 +107,18 @@ const Main = () => {
       setBlink(true);
     }, 13000);
 
+    const changeState = setTimeout(() => {
+      setStatus(true);
+    }, 16000);
+
     return () => {
       clearInterval(interval);
       clearTimeout(fallingText);
       clearTimeout(changeColor);
       clearTimeout(Blink);
+      clearTimeout(changeState)
     };
-  }, [count]);
+  }, []);
 
   // Format count to always display two digits
   const formattedCount = String(count).padStart(2, "0");
@@ -120,7 +169,7 @@ const Main = () => {
             </div>
           </div>
         )}
-        {status ? (
+        {!status ? (
           <div className="w-9/12 border border-2 h-[100%] bg-black text-white p-8 text-center overflow-hidden">
             <div className="typing_text_main_div">
               <ul className="dynamik_text">
@@ -130,22 +179,21 @@ const Main = () => {
               </ul>
             </div>
             {/* {fallingText && ( */}
-               <div className={`fall_blink_text `}>
-               <h4 className="text-9xl font-extrabold mt-8 mb-8 blink_text ">
-                 <div
-                   className={`word  ${color ? "colorChange" : ""} ${
-                     blink ? "blink" : ""
-                   }  ${fallingText ? "block" : "hidden"}`}
-                 >
-                   <span>P</span>
-                   <span>X</span>
-                   <span>W</span>
-                   <span>E</span>
-                   <span>L</span>
-                   <span>L</span>
-                 </div>
-               </h4>
-             </div>
+            <div className={`fall_blink_text `}>
+              <h4 className="text-9xl font-extrabold mt-8 mb-8 blink_text ">
+                <div
+                  className={`word  ${color ? "colorChange" : ""} ${blink ? "blink" : ""
+                    }  ${fallingText ? "block" : "hidden"}`}
+                >
+                  <span>P</span>
+                  <span>X</span>
+                  <span>W</span>
+                  <span>E</span>
+                  <span>L</span>
+                  <span>L</span>
+                </div>
+              </h4>
+            </div>
             {/* )} */}
             <div className="flex justify-center items-center mt-[35%]">
               <div className={`h-[81px] w-24 bg-white text-black text-7xl `}>

@@ -85,10 +85,12 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
       const numberWheelStyle = document.querySelector(".circle").style;
       const letterWheelStyle = document.querySelector(".letter-circle").style;
 
-      //  letterWheelStyle.transition = `transform 20s cubic-bezier(0.2, 0.9, 0.3, 1)`;
-      //  numberWheelStyle.transition = `transform 20s cubic-bezier(0.2, 0.9, 0.3, 1)`;
-      numberWheelStyle.transition = `transform 15s cubic-bezier(0.4, 1, 0.2, 0.9)`;
-      letterWheelStyle.transition = `transform 15s cubic-bezier(0.4, 1, 0.2, 0.9)`;
+      letterWheelStyle.transition = `transform 20s cubic-bezier(0.2, 0.9, 0.6, 1)`;
+      numberWheelStyle.transition = `transform 20s cubic-bezier(0.2, 0.9, 0.6, 1)`;
+      // letterWheelStyle.transition = `transform 20s cubic-bezier(0.24, 0.44, 0.62, 0.92)`;
+      // numberWheelStyle.transition = `transform 20s cubic-bezier(0.24, 0.44, 0.62, 0.92)`;
+      // numberWheelStyle.transition = `transform 15s cubic-bezier(0.1, 0.5, 0.2, 0.3)`;
+      // letterWheelStyle.transition = `transform 15s cubic-bezier(0.1, 0.5, 0.2, 0.3)`;
 
       setRotationAngleNumber(
         rotationAngleNumber + targetAngleNumber + randomFullRotations
@@ -117,7 +119,7 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
   return status ? (
     <div className={`${zoomed ? "zoomed" : ""} h-full relative wheel_main`}>
       <div className="flex h-full overflow-hidden wheel_second_main">
-        <div className="w-1/3 h-full bg-gray-300 flex flex-col justify-between main_spin">
+        <div className="w-[27%] h-full bg-gray-300 flex flex-col justify-between main_spin">
           <div className="relative">
             <div className="w-full h-1 bg-white spin_top_line">
               <hr className="h-1.5 border border-2 border-black overflow-auto circle_hr" />
@@ -194,7 +196,7 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
         </div>
         <div className="w-[35px] h-full bg-black ml-[-20px] z-10 black_border"></div>
 
-        <div className="bg-black h-auto w-2/3 border-l-2 slot_component" ref={digitsRef} >
+        <div className="bg-black h-auto w-[72%] border-l-2 slot_component" ref={digitsRef} >
           <SlotMechine duration={15} endNumbers={endval} setvalueStart rotate />
         </div>
       </div>
