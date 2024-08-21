@@ -32,15 +32,19 @@ const deleteCategory = async (id) => {
 const viewAllCategory = async (gameTime) => {
 
     let endpoint = `/fetch_result.php?game_name=${gameTime}`
-    // let dataToSend = {
-    //     input_date: '2024-08-11',
-    //     game_time: 'Morning'
-    // }
+ 
     const dataToSend = {}
 
     return await HttpClient.post(endpoint, dataToSend);
-
 };
+
+
+const searchAllCategory=async(date,gameTime)=>{
+    let endpoint = `/fetch_first_result.php?game_date=${date}&game_type=${gameTime}`
+    const dataToSend = {}
+    return await HttpClient.post(endpoint, dataToSend);
+}
+
 //service
 const addService = async (data) => {
     let endpoint = 'services'
@@ -124,5 +128,6 @@ export {
     fetchSinglesubService,
     UpdatesubService,
     deletesubService,
-    getAllUnits
+    getAllUnits,
+    searchAllCategory
 }

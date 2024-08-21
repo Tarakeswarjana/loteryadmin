@@ -3,7 +3,7 @@ import DataTable from 'react-data-table-component';
 import { useNavigate } from 'react-router-dom';
 
 // import Select from 'react-select';
-import { addCategory, deleteCategory, viewAllCategory } from '../../Utils/AllApiCals';
+import { addCategory, deleteCategory, viewAllCategory,searchAllCategory } from '../../Utils/AllApiCals';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 
@@ -23,7 +23,9 @@ function Category({ gameTime }) {
     // const [editableId, setEditableId] = useState(null)
     const [categorydata, setCategoryData] = useState([])
     const [isModal, setisModal] = useState(false)
-    // const [isLoading, setisLoading] = useState(true);
+    const [isLoading, setisLoading] = useState(true);
+    const [sDate,setsDate] = useState(null)
+    console.log(sDate,"kkooo")
     // const [totalrowCount, setTotalRow] = useState(true);
     const navigate = useNavigate()
 
@@ -45,10 +47,7 @@ function Category({ gameTime }) {
             name: 'Game_name',
             selector: row => row.game_name,
         },
-        {
-            name: 'Result_value',
-            selector: row => row.result_value,
-        },
+      
 
         {
             name: 'First Digit',
@@ -57,6 +56,10 @@ function Category({ gameTime }) {
         {
             name: 'Second Digit',
             selector: row => row.second_digit,
+        },
+        {
+            name: 'Result_value',
+            selector: row => row.result_value,
         },
 
         {
@@ -68,7 +71,7 @@ function Category({ gameTime }) {
                         <button onClick={() => {
 
                             handleDelete(row.id)
-                        }} className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
+                        }} className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-1 rounded focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
                             Delete
                         </button>
                         <button onClick={() => {
@@ -76,6 +79,12 @@ function Category({ gameTime }) {
                             // handleEdit(row.sl)
                         }} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 ml-1 rounded">
                             view
+                        </button>
+                        <button onClick={() => {
+                            navigate('/resPdf')
+                            // handleEdit(row.sl)
+                        }} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 ml-1 rounded">
+                             Pdf
                         </button>
 
 
@@ -191,7 +200,7 @@ function Category({ gameTime }) {
                 currentDate: currentDate
             }
 
-            console.log("iiiiiii00000", paramsobj)
+        
             let res = await addCategory(paramsobj)
             if (res) {
                 console.log(res, "lll")
@@ -240,7 +249,42 @@ function Category({ gameTime }) {
 
     }
 
+    // const fetchSearchCategory = async () => {
+    //     if(!sDate)
+    //         toast.error("date is required")
+    //     try {
+    //         const res = await searchAllCategory(sDate,gameTime)
+    //         if (res) {
+    //             const newArr =
+    //                 res.data.map((ele, id) => {
+    //                     console.log(ele, "rrrrtttt")
+    //                     return (
+    //                         {
+    //                             sl: id + 1,
+    //                             game_date: ele?.gdate,
+    //                             game_name: ele?.game,
+    //                             result_value: ele?.result,
+    //                             first_digit: ele?.first_digit,
+    //                             second_digit: ele.second_digit,
 
+    //                             type: ele?.type,
+    //                             id: ele?.id
+
+    //                         }
+    //                     )
+
+    //                 })
+
+    //             setCategoryData(newArr)
+    //             // setisLoading(false)
+
+    //         }
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+
+
+    // }
 
 
     const fetchAllCategory = async () => {
@@ -295,6 +339,7 @@ function Category({ gameTime }) {
 
 
 
+
     return (
         <section>
 
@@ -307,25 +352,26 @@ function Category({ gameTime }) {
                         setisModal(true)
 
 
-                    }} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 relative float-right">Add new Category</button></div>
+                    }} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 relative float-right">Add new Result</button></div>
 
-                <form class="flex flex-row gap-1 w-800 mx-auto p-1 border border-gray-300 rounded-lg shadow-md">
-                    <label class="flex flex-col w-40 font-semibold text-gray-800">
-                        Text Input:
-                        <input type="text" class="mt-1 p-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none" />
-                    </label>
+                {/* <form class="flex flex-row gap-1 w-800 mx-auto p-1 border border-gray-300 rounded-lg shadow-md">
+                  
                     <label class="flex flex-col w-40 font-semibold text-gray-800">
                         Date Input:
-                        <input type="date" class="mt-1 p-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none" />
+                        <input type="date" onChange={(e)=>{ 
+                            console.log(e.target.value,"uuuiioooo")
+                                const [year, month, day] = e.target.value.split('-') 
+                   setsDate(`${day}-${month}-${year}`)}} class="mt-1 p-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none" />
                     </label>
                     <label class="flex flex-col w-40 font-semibold text-gray-800">
-                        <button type="submit" onClick={() => {
-                            setisModal(true)
+                        <button type="submit" onClick={(e) => {
+                            e.preventDefault()
+                            fetchSearchCategory()
 
 
                         }} class="text-white w-20 h-10 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 relative float-right">Search</button>
                     </label>
-                </form>
+                </form> */}
                 <DataTable
                     columns={columns}
                     data={categorydata}

@@ -72,9 +72,7 @@ function Login() {
 
 
     }
-    // useEffect(() => {
-
-    // }, [JSON.parse(localStorage.getItem('token'))])
+  
 
     return (
         <>

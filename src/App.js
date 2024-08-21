@@ -8,6 +8,7 @@ import DashBoard from './Components/DashBoard/DashBoard';
 // import Services from './Components/services/Services';
 import Login from './Auth/Login';
 import Main from './first/Main';
+import ResultPdf from './Components/resultPdf/ResultPdf';
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
           <Route path='/morning' element={<Category gameTime={"Morning"} />} />
           <Route path='/noon' element={<Category gameTime={"Noon"} />} />
           <Route path='/evening' element={<Category gameTime={"Evening"} />} />
+          <Route path='/resPdf' element={<ResultPdf/>} />
+
 
         </Route>
         <Route path='/frontendView' element={<Main />} />
