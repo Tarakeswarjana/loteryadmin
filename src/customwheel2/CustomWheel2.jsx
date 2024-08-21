@@ -25,23 +25,23 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
 
     // Zoom after 8 seconds
     const zoomTimer = setTimeout(() => {
-      // setZoomed("zoomed");
+      setZoomed("zoomed");
     }, 7000);
 
     const scrollLettersTimer = setTimeout(() => {
       if (letterWheelRef.current) {
-        // letterWheelRef.current.scrollIntoView({ behavior: "smooth" });
+        letterWheelRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }, 16500);
 
     const digitsTimer = setTimeout(() => {
       if (digitsRef.current) {
-        // digitsRef.current.scrollIntoView({ behavior: "smooth" });
+        digitsRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }, 18000);
 
     const changeState = setTimeout(() => {
-      // setStatus(false);
+      setStatus(false);
     }, 24000);
 
     return () => {
@@ -67,7 +67,7 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
     const letterIndex = letters.indexOf(inputValueLetter.toUpperCase());
 
     if (numbers.includes(num) && letterIndex !== -1) {
-      // audio1.play();
+      audio1.play();
       const anglePerItemNumber = 360 / numbers.length;
       const anglePerItemLetter = 360 / letters.length;
 
@@ -85,12 +85,8 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
       const numberWheelStyle = document.querySelector(".circle").style;
       const letterWheelStyle = document.querySelector(".letter-circle").style;
 
-      letterWheelStyle.transition = `transform 20s cubic-bezier(0.2, 0.9, 0.6, 1)`;
-      numberWheelStyle.transition = `transform 20s cubic-bezier(0.2, 0.9, 0.6, 1)`;
-      // letterWheelStyle.transition = `transform 20s cubic-bezier(0.24, 0.44, 0.62, 0.92)`;
-      // numberWheelStyle.transition = `transform 20s cubic-bezier(0.24, 0.44, 0.62, 0.92)`;
-      // numberWheelStyle.transition = `transform 15s cubic-bezier(0.1, 0.5, 0.2, 0.3)`;
-      // letterWheelStyle.transition = `transform 15s cubic-bezier(0.1, 0.5, 0.2, 0.3)`;
+      numberWheelStyle.transition = `transform 15s cubic-bezier(0.25, 1, 0.26, 1)`;
+      letterWheelStyle.transition = `transform 15s cubic-bezier(0.25, 1, 0.26, 1)`;
 
       setRotationAngleNumber(
         rotationAngleNumber + targetAngleNumber + randomFullRotations
@@ -100,6 +96,13 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
       );
 
       setTimeout(() => {
+        audio1.pause();
+      }, 12500); 
+
+      setTimeout(() => {
+        // audio1.pause();
+        // audio1.currentTime = 0; 
+
         numberWheelStyle.transition = `none`;
         letterWheelStyle.transition = `none`;
         // audio1.pause();
@@ -110,6 +113,7 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
       );
     }
   };
+
   useEffect(() => {
     if (rotate && inputValueNumber && inputValueLetter) {
       handleRotate();
@@ -194,9 +198,12 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
             </ul>
           </div>
         </div>
-        <div className="w-[35px] h-full bg-black ml-[-20px] z-10 black_border"></div>
+        <div className="w-[35px] h-full bg-black ml-[-20px] z-10 black_border z-[-1]"></div>
 
-        <div className="bg-black h-auto w-[72%] border-l-2 slot_component" ref={digitsRef} >
+        <div
+          className="bg-black h-auto w-[72%] border-l-2 slot_component"
+          ref={digitsRef}
+        >
           <SlotMechine duration={15} endNumbers={endval} setvalueStart rotate />
         </div>
       </div>

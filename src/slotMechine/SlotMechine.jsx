@@ -47,8 +47,8 @@ const SlotMechine = ({ duration, endNumbers, rotate }) => {
 
   return (
     <>
-      <div className="w-full h-1 bg-white"></div>
-      <div className="h-[75px] w-[290px] bg-white flex flex-col justify-center item-center">
+      <div className="h-1 bg-white"></div>
+      <div className="h-[90px] w-[290px] bg-white flex flex-col justify-center item-center">
         <div className="digits_dot">
           <hr className="dot" />
           <span>PXWELL</span>
@@ -56,7 +56,7 @@ const SlotMechine = ({ duration, endNumbers, rotate }) => {
           <hr className="dot" />
         </div>
         <div className="bg-gray-300 w-[92%] mx-auto h-[200px] flex justify-center item-center p-[11px]">
-          <div className="bg-gray-500 h-[30px]">
+          <div className="bg-gray-500 h-[43px]">
             <SlotCounter
               ref={counterRef}
               startValue={staticStartVal}

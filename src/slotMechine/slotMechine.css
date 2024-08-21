@@ -37,16 +37,18 @@
 
 /*---------------------------*/
 .index-module_slot__DpPgW {
-  /* height: 45px; */
-  height: 30px !important;
+  height: 42px !important;
+  /* height: 30px !important; */
   /* width: auto;   */
 }
 
 .index-module_num__j6XH3 {
-  /* height: 45px; */
-  height: 30px;
-  line-height: 30px;
-  font-size: 35px;
+  /* height: 30px; */
+  height: 42px;
+  /* line-height: 30px;
+  font-size: 35px; */
+  line-height: 40px;
+  font-size: 40px;
 }
 .dot {
   height: 8px;

@@ -5,81 +5,81 @@ import first from "../images/first.png";
 import logo from "../images/logo/logo.png";
 import CustomWheel2 from "../customwheel2/CustomWheel2";
 // const beepSound = require("../assets/piep-33489-[AudioTrimmer.com].mp3");
+const beepSound = new Audio(
+  require("../assets/piep-33489-[AudioTrimmer.com].mp3")
+);
 
 const Main = () => {
   const [count, setCount] = useState(10);
   const [status, setStatus] = useState(false);
   const [color, setColor] = useState(false);
   const [fallingText, setfallingText] = useState(false);
-  console.log("fallingText", fallingText)
   const [blink, setBlink] = useState(false);
-  console.log("status", status, blink);
   const [liveDraw, setLiveDraw] = useState(false);
   const [home, setHome] = useState(true);
 
+  console.log("2323232", blink, count)
+
   useEffect(() => {
-    // if (!home) {
+    if (!home) {
       // Decrement the count at a 1.5-second interval
       const interval = setInterval(() => {
         setCount((prevCount) => {
-          if (prevCount > 0) {
+          if (prevCount > 1) {
             return prevCount - 1;
+          } else if (prevCount === 1) {
+            beepSound.play(); // Play sound when count reaches 0
+            clearInterval(interval);
+            return 0;
           } else {
             clearInterval(interval);
-            // setStatus(false);
             return 0;
           }
         });
       }, 1500);
-  
-      // Set state changes and timeouts based on `count`
-      // if (count === 0) {
-      //   const numberBlink = setTimeout(() => {
-      //     setBlink(true);
-      //   }, 1800);
-  
-      //   // Clear timeouts to avoid memory leaks
-      //   return () => {
-      //     clearTimeout(numberBlink);
-      //   };
-      // }
-  
+      
+
       const fallingText = setTimeout(() => {
         setfallingText(true);
       }, 7000);
-  
+
       const changeColor = setTimeout(() => {
         setColor(true);
       }, 12500);
-  
+
       const Blink = setTimeout(() => {
         setBlink(true);
       }, 13000);
 
-      const changeState = setTimeout (() => {
-        setStatus(true)
-      }, [16500])
-  
+      const changeState = setTimeout(() => {
+        setStatus(true);
+        beepSound.pause();
+      }, [19000]);
 
       return () => {
         clearInterval(interval);
         clearTimeout(fallingText);
         clearTimeout(changeColor);
         clearTimeout(Blink);
-        clearTimeout(changeState)
+        clearTimeout(changeState);
       };
-    // }
-  }, []); 
-  
+    }
+  }, [home]);
 
   // Format count to always display two digits
   const formattedCount = String(count).padStart(2, "0");
 
   return home ? (
     <div className="home_main_div">
+      <div className="home_text">
+        <p>HONGKONG LOTTERIES</p>
+        <p>PRESENTS</p>
+        <p>PXWELL</p>
+        <p>LIVE LOTTERY DRAW</p>
+      </div>
       <button
         type="button"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+        class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 me-2 mb-2  focus:outline-none dark:focus:ring-blue-800"
         onClick={() => setHome(false)}
       >
         Play
@@ -144,10 +144,9 @@ const Main = () => {
             <div className="fall_blink_text ">
               <h4 className="text-9xl font-extrabold mt-8 mb-8 blink_text ">
                 <div
-                  className={`word ${fallingText ? "block" : "hidden"} ${color ? "colorChange" : ""} ${
-                    blink ? "blink" : ""
-                  }`}
-                  
+                  className={`word ${fallingText ? "block" : "hidden"} ${
+                    color ? "colorChange" : ""
+                  } ${blink ? "blink" : ""}`}
                 >
                   <span>P</span>
                   <span>X</span>
@@ -183,7 +182,7 @@ const Main = () => {
             </div>
           </div>
         ) : (
-          <div className="w-[74vw] border border-2 h-[74vh] overflow-hidden relative">
+          <div className="w-[74vw] border border-2 h-[77vh] overflow-hidden relative">
             <CustomWheel2
               no={39}
               letter={"j"}
@@ -215,7 +214,7 @@ const Main = () => {
         </div>
       </div>
       {/* bottom */}
-      <div className="flex justify-around pt-4">
+      <div className="flex justify-around mt-[23px]">
         <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-64 h-12">
           <p className="w-full flex justify-center items-center bg-red-700 text-white rounded rounded-full font-bold">
             DRAW DATE - 11.08.2024

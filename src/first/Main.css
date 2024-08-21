@@ -7,8 +7,19 @@
   background-repeat: no-repeat;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.home_text {
+  font-size: 100px;
+  font-weight: 700;
+  text-align: center;
+  -webkit-text-stroke: 3px white;
+}
+.home_text p:nth-child(3) {
+  font-size: 110px;
+  font-weight: 800;
 }
 .main_div {
   background-image: url("../images/background.jpg");
@@ -318,7 +329,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  column-gap: 100px;
+  column-gap: 105px;
 }
 .slot_machines_third {
   width: 27%;
