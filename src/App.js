@@ -8,6 +8,7 @@ import DashBoard from './Components/DashBoard/DashBoard';
 // import Services from './Components/services/Services';
 import Login from './Auth/Login';
 import Main from './first/Main';
+import "./Responsive.css"
 
 function App() {
   return (

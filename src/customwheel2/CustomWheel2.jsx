@@ -100,13 +100,11 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
       }, 12500); 
 
       setTimeout(() => {
-        // audio1.pause();
-        // audio1.currentTime = 0; 
+
 
         numberWheelStyle.transition = `none`;
         letterWheelStyle.transition = `none`;
-        // audio1.pause();
-      }, 15000); // 15 seconds
+      }, 15000); // 15 second
     } else {
       alert(
         "Please enter a valid number (30-45) and letter (A, B, C, D, E, G, H, J, K, L)"

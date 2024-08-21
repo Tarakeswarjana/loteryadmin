@@ -89,8 +89,8 @@ const Main = () => {
     <div className="main_div">
       {/* top */}
       <div className="flex justify-around pt-4">
-        <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-72 h-[56px]">
-          <p className="w-full text-center bg-yellow-400 text-black rounded rounded-full font-bold">
+        <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-72 h-[56px] ">
+          <p className="w-full text-center bg-yellow-400 text-black rounded rounded-full font-bold top_left">
             PLAY LIVE DRAW ON <span className="text-red-700">YOUTUBE</span>{" "}
             <br />
             HONG KONG LOTTERIES{" "}
@@ -100,15 +100,15 @@ const Main = () => {
           <img className="lottery" src={middle} alt="middle" />
         </div>
         <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-56 h-[56px]">
-          <p className="w-full flex justify-center items-center bg-yellow-400 text-black rounded rounded-full font-bold">
+          <p className="w-full flex justify-center items-center bg-yellow-400 text-black rounded rounded-full font-bold top_right">
             LIVE FROM HONG KONG
           </p>
         </div>
       </div>
       {/* middle */}
-      <div className="mt-4 w-[96%] h-[75vh] mx-auto flex justify-between ">
+      <div className="mt-4 w-[96%] h-[75vh] mx-auto flex justify-between main_middle">
         <div className="w-[50px] h-[100%] flex justify-between items-center mr-2 ">
-          <div className="w-full h-[90%] flex flex-col justify-evenly items-center text-black text-5xl rounded rounded-full font-bold">
+          <div className="w-full h-[90%] flex flex-col justify-evenly items-center text-black text-5xl rounded rounded-full font-bold pxwell_main">
             <p className="pxwell font-extrabold">P</p>
             <p className="pxwell font-extrabold">X</p>
             <p className="pxwell font-extrabold">W</p>
@@ -132,7 +132,7 @@ const Main = () => {
           </div>
         )}
         {!status ? (
-          <div className="w-9/12 border border-2 h-[100%] bg-black text-white p-8 text-center overflow-hidden">
+          <div className="w-9/12 border border-2 h-[100%] bg-black text-white p-8 text-center overflow-hidden middle_text_area">
             <div className="typing_text_main_div">
               <ul className="dynamik_text">
                 <li>
@@ -158,8 +158,8 @@ const Main = () => {
               </h4>
             </div>
             {/* )} */}
-            <div className="flex justify-center items-center mt-[27%]">
-              <div className={`h-[81px] w-24 bg-white text-black text-7xl `}>
+            <div className="flex justify-center items-center number_main_div">
+              <div className={`h-[81px] w-24 bg-white text-black text-7xl count_number`}>
                 <span
                   className={`${
                     formattedCount === "00" ? (blink ? "blink" : "") : ""
@@ -169,7 +169,7 @@ const Main = () => {
                 </span>
               </div>
               <div
-                className={`h-[81px] w-24 bg-white text-black text-7xl ml-2 `}
+                className={`h-[81px] w-24 bg-white text-black text-7xl ml-2 count_number`}
               >
                 <span
                   className={`${
@@ -203,7 +203,7 @@ const Main = () => {
           <p className="prize font-bold text-3xl ">SERIES</p>
         </div>
         <div className="w-[50px] h-[100%] flex justify-between items-center ml-2 ">
-          <div className="w-full h-[90%] flex flex-col justify-evenly items-center text-black text-5xl rounded rounded-full font-bold">
+          <div className="w-full h-[90%] flex flex-col justify-evenly items-center text-black text-5xl rounded rounded-full font-bold pxwell_main">
             <p className="pxwell font-extrabold">P</p>
             <p className="pxwell font-extrabold">X</p>
             <p className="pxwell font-extrabold">W</p>
@@ -215,7 +215,7 @@ const Main = () => {
       </div>
       {/* bottom */}
       <div className="flex justify-around mt-[23px]">
-        <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-64 h-12">
+        <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-64 h-12 draw_date_time">
           <p className="w-full flex justify-center items-center bg-red-700 text-white rounded rounded-full font-bold">
             DRAW DATE - 11.08.2024
           </p>
@@ -223,7 +223,7 @@ const Main = () => {
         <div className="">
           <img className="bottom_logo" src={logo} alt="middle" />
         </div>
-        <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-56 h-12">
+        <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-56 h-12 draw_date_time">
           <p className="w-full flex justify-center items-center bg-red-700 text-white rounded rounded-full font-bold">
             DRAW TIME - 10.00PM
           </p>
