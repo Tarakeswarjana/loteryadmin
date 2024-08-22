@@ -5,18 +5,6 @@ import SlotCounter from "react-slot-counter";
 const SlotMechine = ({ duration, endNumbers, rotate }) => {
   const [isspinn, setisSpinn] = useState(false);
 
-  // const endValue = useMemo(() => {
-  //   if (typeof endNumbers !== "string") {
-  //     return null; // Ensure endNumbers is a string before processing
-  //   }
-
-  //   return endNumbers
-  //     .split("")
-  //     .map((char, index) => <span key={index}>{char}</span>);
-  // }, [endNumbers]);
-
-  // console.log("2345", typeof(endNumbers), endValue)
-
   const counterRef = useRef(null);
 
   const startAnimation = useCallback(() => {
@@ -48,14 +36,14 @@ const SlotMechine = ({ duration, endNumbers, rotate }) => {
   return (
     <>
       <div className="h-1 bg-white"></div>
-      <div className="h-[90px] w-[290px] bg-white flex flex-col justify-center item-center">
+      <div className="h-[90px] w-[290px] bg-white flex flex-col justify-center item-center slot_machine_top">
         <div className="digits_dot">
           <hr className="dot" />
           <span>PXWELL</span>
           <span>PXWELL</span>
           <hr className="dot" />
         </div>
-        <div className="bg-gray-300 w-[92%] mx-auto h-[200px] flex justify-center item-center p-[11px]">
+        <div className="bg-gray-300 w-[92%] mx-auto h-[200px] flex justify-center item-center p-[12px] slot_main_div">
           <div className="bg-gray-500 h-[43px]">
             <SlotCounter
               ref={counterRef}

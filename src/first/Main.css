@@ -75,7 +75,8 @@
   animation-timing-function: cubic-bezier(0.6, 0, 0.4, 1);
 }
 .fall_blink_text {
-  height: 447px;
+  /* height: 447px; */
+  height: 280px;
 }
 
 /* Keyframes for fall */

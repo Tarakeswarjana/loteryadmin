@@ -3,6 +3,11 @@
 /* ###########################################*/
 
 @media (max-width: 640px) {
+  .main_div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
   .home_text {
     font-size: 60px;
     font-weight: 600;
@@ -23,7 +28,7 @@
   .main_middle {
     width: 100%;
     /* height: 42%; */
-    height: 78%;
+    height: 50%;
   }
   .pxwell_main_parent {
     margin-left: 0;
@@ -73,7 +78,7 @@
 
   .fall_blink_text {
     /* height: 190px; */
-    height: 540px;
+    height: 270px;
   }
   .number_main_div {
     margin-top: 40;
@@ -90,6 +95,10 @@
   .main_page_wheel {
     height: 41vh;
   }
+  .bottom_div {
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
 
   /*------------ main home css end here -------------*/
 
@@ -102,18 +111,20 @@
   }
   .arrow,
   .letter_Arrow {
-    left: 40%;
+    /* left: 40%; */
+    left: 34%;
     border-top: 23px solid red;
   }
   .circle_hr {
-    left: 37.5%;
+    left: 31%;
   }
   .circle,
   .letter-circle {
     width: 90px;
     height: 90px;
     padding: 0;
-    margin: 17px;
+    /* margin: 17px; */
+    margin: 17px 6px;
   }
   .okk,
   .letter_okk {
@@ -121,7 +132,7 @@
     height: 90px;
   }
   .okk {
-    rotate: 1deg;
+    rotate: 5deg;
   }
   .text {
     position: absolute;
@@ -129,10 +140,8 @@
     width: 200%;
     height: 200%;
     text-align: center;
-    /* display: block; */
     transform: skewY(64deg) rotate(-8deg);
     padding-top: 19px;
-    /* cursor: pointer; */
     font-weight: bolder;
     font-size: 8px;
   }
@@ -150,15 +159,23 @@
   .black_border {
     width: 2px;
   }
+  .zoomed {
+    transform: scale(2.4);
+    margin-right: 0;
+  }
+  .slot_machine_top {
+    /* width: 130px; */
+    width: 100%;
+  }
   .slot_component {
     width: 57%;
   }
   .main_slot {
     width: 155px;
   }
-  .index-module_num__j6XH3 {
-    font-size: 17px;
-  }
+  /* .index-module_num__j6XH3 {
+    
+  } */
 
   .index-module_slot_wrap__ZT-DX :nth-child(2),
   .index-module_slot_wrap__ZT-DX :nth-child(3),
@@ -169,7 +186,77 @@
   .spin_top_line {
     width: 87%;
   }
+
+  .index-module_slot__DpPgW {
+    height: 35px !important;
+  }
+
+  .index-module_num__j6XH3 {
+    height: 35px;
+    line-height: 33px;
+    /* font-size: 15px;  its work for small screen */
+    font-size: 8px;
+  }
+}
+.logo_container {
+  transform: skewY(60deg) rotate(-55deg);
+  padding-top: 28px;
+}
+.logo_container img {
+  margin-left: 66px;
+  height: 8px;
+  width: 8px;
+  }
+.slot_main_div {
 }
 
+/*---------  second page css ------------*/
+.second_main_div {
+  width: 100%;
+  /* display: flex;
+    justify-content: center; */
+}
+.typing_text_2_main_div {
+  font-size: 95px;
+  height: 127px;
+  width: 100%;
+}
+.nextDraw {
+  -webkit-text-stroke: 1px #fff;
+  font-size: 42px;
+  font-weight: 900;
+}
+.secoundPrizeNo {
+  -webkit-text-stroke: 1px #fff;
+  font-size: 65px;
+  margin-top: 50px;
+}
+.number {
+  font-size: 150px;
+}
+.nd {
+  font-size: 70px;
+}
+.bottom_text {
+  width: 100%;
+}
+.bottom_text li span {
+  font-size: 26px;
+}
+.dynamik_text_bottom li span::after {
+  margin-top: 21px;
+}
+.live_draw_main {
+margin-left: 0;
+}
+.live_draw {
+  font-size: 1.5rem;
+}
+.second_inner {
+width: 100%;
+}
+.slot_machines {
+  padding: 2px;
+}
 @media (min-width: 641px) and (max-width: 767px) {
 }

@@ -118,8 +118,8 @@ const Main = () => {
           </div>
         </div>
         {liveDraw && (
-          <div className="w-[50px] h-[100%] flex justify-between items-center mr-2 ml-8">
-            <div className="w-full h-[90%] flex flex-col justify-evenly items-center text-black text-5xl rounded rounded-full font-bold">
+          <div className="w-[50px] h-[100%] flex justify-between items-center mr-2 ml-8 live_draw_main">
+            <div className="w-full h-[90%] flex flex-col justify-evenly items-center text-black text-5xl rounded rounded-full font-bold live_draw">
               <p className="pxwell font-extrabold">L</p>
               <p className="pxwell font-extrabold">I</p>
               <p className="pxwell font-extrabold">V</p>
@@ -182,7 +182,7 @@ const Main = () => {
             </div>
           </div>
         ) : (
-          <div className="w-[74vw] border border-2 h-[77vh] overflow-hidden relative">
+          <div className="w-[74vw] border border-2 overflow-hidden relative">
             <CustomWheel2
               no={39}
               letter={"j"}
@@ -214,7 +214,7 @@ const Main = () => {
         </div>
       </div>
       {/* bottom */}
-      <div className="flex justify-around mt-[23px]">
+      <div className="flex justify-around mt-[23px] bottom_div">
         <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-64 h-12 draw_date_time">
           <p className="w-full flex justify-center items-center bg-red-700 text-white rounded rounded-full font-bold">
             DRAW DATE - 11.08.2024
