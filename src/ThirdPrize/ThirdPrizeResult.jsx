@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import SlotMechine from "../slotMechine/SlotMechine";
 import FourthPrizeHome from "../FourthPrice/FourthPrizeHome";
 const audio = new Audio(require("../../src/assets/bicycle-wheel-spinning-49716-[AudioTrimmer.com].mp3"));

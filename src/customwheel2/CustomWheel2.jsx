@@ -25,23 +25,23 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
 
     // Zoom after 8 seconds
     const zoomTimer = setTimeout(() => {
-      setZoomed("zoomed");
+      // setZoomed("zoomed");
     }, 7000);
 
     const scrollLettersTimer = setTimeout(() => {
       if (letterWheelRef.current) {
-        letterWheelRef.current.scrollIntoView({ behavior: "smooth" });
+        // letterWheelRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }, 16500);
 
     const digitsTimer = setTimeout(() => {
       if (digitsRef.current) {
-        digitsRef.current.scrollIntoView({ behavior: "smooth" });
+        // digitsRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }, 18000);
 
     const changeState = setTimeout(() => {
-      setStatus(false);
+      // setStatus(false);
     }, 24000);
 
     return () => {
@@ -121,7 +121,7 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
   return status ? (
     <div className={`${zoomed ? "zoomed" : ""} h-full relative wheel_main`}>
       <div className="flex h-full overflow-hidden wheel_second_main">
-        <div className="w-[27%] h-full bg-gray-300 flex flex-col justify-between main_spin">
+        <div className="w-[27%] h-full bg-gray-300 flex flex-col justify-between main_spin pb-[25px]">
           <div className="relative">
             <div className="w-full h-1 bg-white spin_top_line">
               <hr className="h-1.5 border border-2 border-black overflow-auto circle_hr" />
@@ -196,7 +196,7 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
             </ul>
           </div>
         </div>
-        <div className="w-[35px] h-full bg-black ml-[-20px] z-10 black_border z-[-1]"></div>
+        <div className="w-[35px] h-full bg-black ml-[-20px] z-10 black_border"></div>
 
         <div
           className="bg-black h-auto w-[72%] border-l-2 slot_component"

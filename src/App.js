@@ -21,7 +21,7 @@ function App() {
           <Route path='/evening' element={<Category gameTime={"Evening"} />} />
 
         </Route>
-        <Route path='/frontendView' element={<Main />} />
+        <Route path='/frontendView/:game_name' element={<Main />} />
         <Route path='/login' element={< Login />} />
 
       </Routes>

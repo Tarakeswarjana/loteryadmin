@@ -197,66 +197,67 @@
     /* font-size: 15px;  its work for small screen */
     font-size: 8px;
   }
-}
-.logo_container {
-  transform: skewY(60deg) rotate(-55deg);
-  padding-top: 28px;
-}
-.logo_container img {
-  margin-left: 66px;
-  height: 8px;
-  width: 8px;
-  }
-.slot_main_div {
-}
 
-/*---------  second page css ------------*/
-.second_main_div {
-  width: 100%;
-  /* display: flex;
+  .logo_container {
+    transform: skewY(60deg) rotate(-55deg);
+    padding-top: 28px;
+  }
+  .logo_container img {
+    margin-left: 66px;
+    height: 8px;
+    width: 8px;
+  }
+  .slot_main_div {
+  }
+
+  /*---------  second page css ------------*/
+  .second_main_div {
+    width: 100%;
+    /* display: flex;
     justify-content: center; */
-}
-.typing_text_2_main_div {
-  font-size: 95px;
-  height: 127px;
-  width: 100%;
-}
-.nextDraw {
-  -webkit-text-stroke: 1px #fff;
-  font-size: 42px;
-  font-weight: 900;
-}
-.secoundPrizeNo {
-  -webkit-text-stroke: 1px #fff;
-  font-size: 65px;
-  margin-top: 50px;
-}
-.number {
-  font-size: 150px;
-}
-.nd {
-  font-size: 70px;
-}
-.bottom_text {
-  width: 100%;
-}
-.bottom_text li span {
-  font-size: 26px;
-}
-.dynamik_text_bottom li span::after {
-  margin-top: 21px;
-}
-.live_draw_main {
-margin-left: 0;
-}
-.live_draw {
-  font-size: 1.5rem;
-}
-.second_inner {
-width: 100%;
-}
-.slot_machines {
-  padding: 2px;
+  }
+  .typing_text_2_main_div {
+    font-size: 95px;
+    height: 127px;
+    width: 100%;
+  }
+  .nextDraw {
+    -webkit-text-stroke: 1px #fff;
+    font-size: 42px;
+    font-weight: 900;
+  }
+  .secoundPrizeNo {
+    -webkit-text-stroke: 1px #fff;
+    font-size: 65px;
+    margin-top: 50px;
+  }
+  .number {
+    font-size: 150px;
+  }
+  .nd {
+    font-size: 70px;
+  }
+  .bottom_text {
+    width: 100%;
+  }
+  .bottom_text li span {
+    font-size: 26px;
+  }
+  .dynamik_text_bottom li span::after {
+    margin-top: 21px;
+  }
+  .live_draw_main {
+    margin-left: 0;
+  }
+  .live_draw {
+    font-size: 1.5rem;
+  }
+  .second_inner {
+    width: 100%;
+  }
+  .slot_machines {
+    padding: 2px;
+  }
 }
 @media (min-width: 641px) and (max-width: 767px) {
 }

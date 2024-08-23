@@ -4,12 +4,15 @@ import middle from "../images/MIDDLE.png";
 import first from "../images/first.png";
 import logo from "../images/logo/logo.png";
 import CustomWheel2 from "../customwheel2/CustomWheel2";
-// const beepSound = require("../assets/piep-33489-[AudioTrimmer.com].mp3");
+import { getFirstResult } from "../Utils/AllApiCals";
+import { useLocation } from "react-router-dom";
 const beepSound = new Audio(
   require("../assets/piep-33489-[AudioTrimmer.com].mp3")
 );
 
 const Main = () => {
+  const location = useLocation();
+  const data  = location.state.row || {};
   const [count, setCount] = useState(10);
   const [status, setStatus] = useState(false);
   const [color, setColor] = useState(false);
@@ -17,8 +20,25 @@ const Main = () => {
   const [blink, setBlink] = useState(false);
   const [liveDraw, setLiveDraw] = useState(false);
   const [home, setHome] = useState(true);
+  const [resultData, setResultData] = useState({})
+ 
+  console.log("resultData",  resultData)
 
-  console.log("2323232", blink, count)
+  const fetchSpinData = async () => {
+    try {
+      let res = await getFirstResult(data.game_date, data.game_name);
+      if(res && res.status) {
+        setResultData(res?.data?.[0])
+      }
+      console.log("ressssss", res)
+    } catch (error) {
+      console.log("errorrrrr", error)
+    }
+  }
+
+  useEffect(() => {
+    fetchSpinData()
+  }, [])
 
   useEffect(() => {
     if (!home) {
@@ -106,7 +126,7 @@ const Main = () => {
         </div>
       </div>
       {/* middle */}
-      <div className="mt-4 w-[96%] h-[75vh] mx-auto flex justify-between main_middle">
+      <div className="mt-4 w-[96%] h-[78vh] mx-auto flex justify-between main_middle">
         <div className="w-[50px] h-[100%] flex justify-between items-center mr-2 ">
           <div className="w-full h-[90%] flex flex-col justify-evenly items-center text-black text-5xl rounded rounded-full font-bold pxwell_main">
             <p className="pxwell font-extrabold">P</p>
@@ -184,9 +204,9 @@ const Main = () => {
         ) : (
           <div className="w-[74vw] border border-2 overflow-hidden relative">
             <CustomWheel2
-              no={39}
-              letter={"j"}
-              digits={61754}
+              no={resultData?.pre_digit}
+              letter={resultData.series}
+              digits={resultData?.result}
               rotate={true}
               setLiveDraw={setLiveDraw}
             />

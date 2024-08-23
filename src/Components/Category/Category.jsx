@@ -17,6 +17,7 @@ const initialState = {
   preDigit: "",
   series: "",
   firstPrize: "",
+  spin_time: "",
 };
 
 function Category({ gameTime }) {
@@ -61,6 +62,7 @@ function Category({ gameTime }) {
     {
       name: "Action",
       selector: (row) => {
+        console.log("noon", row)
         return (
           <div className="w-[400px] overflow-scroll">
             <button
@@ -72,9 +74,10 @@ function Category({ gameTime }) {
               Delete
             </button>
             <button
-              onClick={() => {
-                navigate("/frontendView");
+              onClick={(e) => {
+                navigate(`/frontendView/${row.game_name}`, {state : {row}});
                 // handleEdit(row.sl)
+                // console.log("RowData:", row);
               }}
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 ml-1 rounded"
             >
@@ -246,7 +249,8 @@ function Category({ gameTime }) {
       const res = await viewAllCategory(gameTime);
 
       if (res) {
-        const newArr = res.map((ele, id) => {
+        const newArr = res?.map((ele, id) => {
+          console.log("ele", ele)
           return {
             sl: id + 1,
             game_date: ele?.game_date,
@@ -256,6 +260,7 @@ function Category({ gameTime }) {
             second_digit: ele.second_digit,
             type: ele?.type,
             id: ele?.id,
+            spin_time: ele?.spin_time,
           };
         });
         setCategoryData(newArr);
@@ -331,119 +336,137 @@ function Category({ gameTime }) {
 
         {/*Model from*/}
         {isModal && (
-          <div className="modelcss">
-            <span>Set Golden Result {gameTime} </span>
-            <span
-              onClick={() => {
-                setisModal(false);
-              }}
-              className="float-right cursor-pointer text-red-400"
-            >
-              Close
-            </span>
-            <form class="max-w-[54rem]  mx-auto m-t-[4rem] ">
-              <div class="mb-5">
-                <label
-                  for="email"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Game Name
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  disabled="true"
-                  name="categoryName"
-                  value={gameTime}
-                  placeholder="Morning"
-                  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                  required
-                />
-              </div>
-
-              <div class="mb-5">
-                <label
-                  for="email"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Draw No
-                </label>
-                <input
-                  type="number"
-                  id="email"
-                  onChange={handleChange}
-                  name="DrawNo"
-                  value={fromdata.DrawNo}
-                  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                  required
-                />
-              </div>
-              <div class="mb-5">
-                <label
-                  for="password"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Pre Digit(30 to 45)
-                </label>
-                <input
-                  type="number"
-                  id="password"
-                  onChange={(e) => {
-                    handleChange(e);
-                  }}
-                  name="preDigit"
-                  value={fromdata.preDigit}
-                  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                  required
-                />
-              </div>
-              <div class="mb-5">
-                <label
-                  for="repeat-password"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  SERIES(A,B,C,D,E,G,H,J,K,L)
-                </label>
-                <input
-                  type="text"
-                  id="repeat-password"
-                  onChange={handleChange}
-                  name="series"
-                  value={fromdata.series.toUpperCase()}
-                  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                  required
-                />
-              </div>
-              <div class="mb-5">
-                <label
-                  for="repeat-password"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  First Prize
-                </label>
-                <input
-                  type="number"
-                  id="firstPrize"
-                  onChange={handleChange}
-                  name="firstPrize"
-                  value={fromdata.firstPrize}
-                  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                  required
-                />
-              </div>
-
-              <button
-                type="submit"
-                onClick={(e) => {
-                  e.preventDefault();
-
-                  handleSubmit();
+          <div className="modal_main">
+            <div className="modelcss">
+              <span>Set Golden Result {gameTime} </span>
+              <span
+                onClick={() => {
+                  setisModal(false);
                 }}
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 relative float-right"
+                className="float-right cursor-pointer text-red-900"
               >
-                Add
-              </button>
-            </form>
+                Close
+              </span>
+              <form class="max-w-[54rem]  mx-auto m-t-[4rem] ">
+                <div class="mb-5">
+                  <label
+                    for="email"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Game Name
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    disabled="true"
+                    name="categoryName"
+                    value={gameTime}
+                    placeholder="Morning"
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                    required
+                  />
+                </div>
+                <div class="mb-5">
+                  <label
+                    for="email"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Draw No
+                  </label>
+                  <input
+                    type="number"
+                    id="email"
+                    onChange={handleChange}
+                    name="DrawNo"
+                    value={fromdata.DrawNo}
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                    required
+                  />
+                </div>
+                <div class="mb-5">
+                  <label
+                    for="password"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Pre Digit(30 to 45)
+                  </label>
+                  <input
+                    type="number"
+                    id="password"
+                    onChange={(e) => {
+                      handleChange(e);
+                    }}
+                    name="preDigit"
+                    value={fromdata.preDigit}
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                    required
+                  />
+                </div>
+                <div class="mb-5">
+                  <label
+                    for="repeat-password"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    SERIES(A,B,C,D,E,G,H,J,K,L)
+                  </label>
+                  <input
+                    type="text"
+                    id="repeat-password"
+                    onChange={handleChange}
+                    name="series"
+                    value={fromdata.series.toUpperCase()}
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                    required
+                  />
+                </div>
+                <div class="mb-5">
+                  <label
+                    for="repeat-password"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    First Prize
+                  </label>
+                  <input
+                    type="number"
+                    id="firstPrize"
+                    onChange={handleChange}
+                    name="firstPrize"
+                    value={fromdata.firstPrize}
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                    required
+                  />
+                </div>
+                <div class="mb-5">
+                  <label
+                    for="repeat-password"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Rotation Time
+                  </label>
+                  <input
+                    type="number"
+                    id="spin_time"
+                    onChange={handleChange}
+                    name="spin_time"
+                    value={fromdata.spin_time}
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                    required
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  onClick={(e) => {
+                    e.preventDefault();
+
+                    handleSubmit();
+                  }}
+                  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 relative float-right"
+                >
+                  Add
+                </button>
+              </form>
+            </div>
           </div>
         )}
       </section>

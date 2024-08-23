@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import FourthPriceResult from "./FourthPriceResult";
 
-const FourthPrizeHome = () => {
+const FourthPrizeHome = ({setLiveDraw}) => {
     const [textType, setTextType] = useState(false);
     const [textFall, setTextFall] = useState(false);
     const [showLine, setShowLine] = useState(false);
