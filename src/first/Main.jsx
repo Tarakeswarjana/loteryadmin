@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Main.css";
-import middle from "../images/MIDDLE.png";
+import middle from "../images/draw_img.png";
 import first from "../images/first.png";
 import logo from "../images/logo/logo.png";
+import prize from "../images/prize.png"
 import CustomWheel2 from "../customwheel2/CustomWheel2";
 import { getFirstResult } from "../Utils/AllApiCals";
 import { useLocation } from "react-router-dom";
@@ -71,7 +72,7 @@ const Main = () => {
       }, 13000);
 
       const changeState = setTimeout(() => {
-        setStatus(true);
+        // setStatus(true);
         beepSound.pause();
       }, [19000]);
 
@@ -116,7 +117,15 @@ const Main = () => {
           </p>
         </div>
         <div className="">
-          <img className="lottery" src={middle} alt="middle" />
+          {/* <img className="lottery" src={middle} alt="middle" /> */}
+          <div class="draw">
+            <img src={middle} alt="middle image" />
+          </div>
+          <div class="draw-1">
+            <h2>Singapore lotteries</h2>
+            <h3>DRAW TIME (12:30-16:30-20:30)PM </h3>
+          </div>
+
         </div>
         <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-56 h-[56px]">
           <p className="w-full flex justify-center items-center bg-yellow-400 text-black rounded rounded-full font-bold top_right">
@@ -163,9 +172,8 @@ const Main = () => {
             <div className="fall_blink_text ">
               <h4 className="text-9xl font-extrabold mt-8 mb-8 blink_text ">
                 <div
-                  className={`word ${fallingText ? "block" : "hidden"} ${
-                    color ? "colorChange" : ""
-                  } ${blink ? "blink" : ""}`}
+                  className={`word ${fallingText ? "block" : "hidden"} ${color ? "colorChange" : ""
+                    } ${blink ? "blink" : ""}`}
                 >
                   <span>P</span>
                   <span>X</span>
@@ -182,9 +190,8 @@ const Main = () => {
                 className={`h-[81px] w-24 bg-white text-black text-7xl count_number`}
               >
                 <span
-                  className={`${
-                    formattedCount === "00" ? (blink ? "blink" : "") : ""
-                  }`}
+                  className={`${formattedCount === "00" ? (blink ? "blink" : "") : ""
+                    }`}
                 >
                   00
                 </span>
@@ -193,9 +200,8 @@ const Main = () => {
                 className={`h-[81px] w-24 bg-white text-black text-7xl ml-2 count_number`}
               >
                 <span
-                  className={`${
-                    formattedCount === "00" ? (blink ? "blink" : "") : ""
-                  }`}
+                  className={`${formattedCount === "00" ? (blink ? "blink" : "") : ""
+                    }`}
                 >
                   {formattedCount}
                 </span>
@@ -214,7 +220,7 @@ const Main = () => {
           </div>
         )}
 
-        <div className="curve w-2/12 bg-red-600 ml-1 flex flex-col justify-center items-center">
+        {/* <div className="curve w-2/12 bg-red-600 ml-1 flex flex-col justify-center items-center">
           <img src={first} className="h-16 w-16" alt="first" />
           <p className="text-teal-200 font-extrabold text-5xl">prize</p>
           <p className="prize font-bold text-3xl ">ON</p>
@@ -222,7 +228,30 @@ const Main = () => {
           <p className="prize font-bold text-3xl ">DIGITS</p>
           <p className="prize font-bold text-3xl ">WITH</p>
           <p className="prize font-bold text-3xl ">SERIES</p>
+        </div> */}
+        <div className="oval_div">
+          <div className="prize">
+            <div className="first">
+              <img src={prize} alt="prize" />
+              <h4>1st</h4>
+            </div>
+            <div className="prize_text">
+         
+            </div>
+            <div className="pri">
+              <h2>prize</h2>
+            </div>
+            <div className="digit">
+              <h3>
+                on <br /> 5 <br />
+                digits <br /> with <br />
+                series
+              </h3>
+            </div>
+          </div>
         </div>
+
+
         <div className="w-[50px] h-[100%] flex justify-between items-center ml-2 ">
           <div className="w-full h-[90%] flex flex-col justify-evenly items-center text-black text-5xl rounded rounded-full font-bold pxwell_main">
             <p className="pxwell font-extrabold">P</p>
@@ -250,10 +279,10 @@ const Main = () => {
             {data.game_name === "Morning"
               ? "10:00 AM"
               : data.game_name === "Noon"
-              ? "2:00 PM"
-              : data.game_name === "Evening"
-              ? "04:00 PM"
-              : ""}
+                ? "2:00 PM"
+                : data.game_name === "Evening"
+                  ? "04:00 PM"
+                  : ""}
           </p>
         </div>
       </div>

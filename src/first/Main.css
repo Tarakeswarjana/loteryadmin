@@ -26,7 +26,7 @@
   font-weight: 800;
 }
 .main_div {
-  background-image: url("../images/background.jpg");
+  background-image: url("../images/lottery_bg.jpg");
   height: 100vh;
   width: 100%;
   background-position: center;
@@ -36,6 +36,109 @@
 .pxwell {
   -webkit-text-stroke: 2px #fff;
 }
+
+/*-------   priyanka----------*/
+.draw img {
+  height: 100px;
+}
+
+.draw-1 {
+  position: relative;
+}
+
+.draw-1 h2 {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  font-size: 34px;
+  text-transform: uppercase;
+  letter-spacing: 9px;
+  font-weight: 800;
+  color: #e20608;
+  text-align: center;
+}
+
+.draw-1 h3 {
+  position: absolute;
+  /* top: 71px; */
+  bottom: 44px;
+  left: 26%;
+  right: 0px;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: #fff;
+}
+.prize {
+  background-color: #ec1300;
+  width: 126%;
+  height: 95%;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  /* margin: 0px 76px; */
+  position: relative;
+}
+
+.first {
+  position: absolute;
+  top: 178px;
+  bottom: 0px;
+  left: 31px;
+  right: 0px;
+}
+
+/* .text{
+  position: absolute;
+  bottom: 39%;
+  right: 405px;
+
+} */
+.prize_text h4 {
+  font-size: 44px;
+  font-weight: 700;
+  position: relative;
+  top: 183px;
+  left: 46px;
+}
+.digit h3 {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 26px;
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #040302;
+  -webkit-text-stroke: 1px #fff;
+}
+.pri h2{
+  text-align: center;
+  position: absolute;
+  top: 38%;
+  left: 10px;
+  font-size: 60px;
+  font-weight: 700;
+  color: #67cbcb;
+  text-transform: capitalize;
+}
+.px-2 h2 {
+  font-size: 67px;
+  font-weight: 700;
+  text-transform: uppercase;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  letter-spacing: 15px;
+  -webkit-text-stroke: 1px #fff;
+  padding: 0px 0px;
+}
+.oval_div {
+  width: 130px;
+}
+
+/*----------  ---------*/
+
 .lottery {
   height: 60px;
   width: 500px;
@@ -73,6 +176,12 @@
   transform: translateY(-400px);
   animation: fall 2s forwards, jump 0.6s ease-in-out forwards;
   animation-timing-function: cubic-bezier(0.6, 0, 0.4, 1);
+}
+.middle_text_area {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 .fall_blink_text {
   /* height: 447px; */

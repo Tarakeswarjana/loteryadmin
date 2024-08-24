@@ -3,7 +3,7 @@ import SecoundPrizeResult from "./SecoundPrizeResult";
 import { useLocation } from "react-router-dom";
 import { getSecoundThirdResult } from "../Utils/AllApiCals";
 
-const SecoundPrizeHome = ({setLiveDraw}) => {
+const SecoundPrizeHome = ({ setLiveDraw }) => {
   const [textType, setTextType] = useState(false);
   const [textFall, setTextFall] = useState(false);
   const [showLine, setShowLine] = useState(false);
@@ -68,7 +68,7 @@ const SecoundPrizeHome = ({setLiveDraw}) => {
 
   return status ? (
     <div className="bg-black fixed inset-0">
-      <dib className="flex flex-col  w-[52%] h-[100vh] mx-auto text-center second_main_div">
+      <dib className="flex justify-around flex-col  w-[52%] h-[100vh] mx-auto text-center second_main_div">
         <div className="typing_text_2_main_div">
           <ul className={textType ? "dynamik_text2" : "hidden"}>
             <li>
@@ -76,9 +76,11 @@ const SecoundPrizeHome = ({setLiveDraw}) => {
             </li>
           </ul>
         </div>
-        <div className={showLine ? "line" : ""}></div>
-        <div className={textFall ? "nextDraw" : ""}>
-          <span>LIVE NEXT DRAW</span>
+        <div className="mt-[-100px]">
+          <div className={showLine ? "line" : ""}></div>
+          <div className={textFall ? "nextDraw" : ""}>
+            <span>LIVE NEXT DRAW</span>
+          </div>
         </div>
         <div className={`secoundPrizeNo ${blink ? "blink" : "hidden"}`}>
           <span className="number">2</span>
@@ -94,7 +96,7 @@ const SecoundPrizeHome = ({setLiveDraw}) => {
       </dib>
     </div>
   ) : (
-    <SecoundPrizeResult setLiveDraw={setLiveDraw} resultData={resultData}  />
+    <SecoundPrizeResult setLiveDraw={setLiveDraw} resultData={resultData} />
   )
 };
 
