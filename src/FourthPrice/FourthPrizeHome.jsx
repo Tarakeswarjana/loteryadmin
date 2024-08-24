@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import FourthPriceResult from "./FourthPriceResult";
+import { useLocation } from "react-router-dom";
+import { getFourthResultData } from "../Utils/AllApiCals";
 
 const FourthPrizeHome = ({setLiveDraw}) => {
     const [textType, setTextType] = useState(false);
@@ -8,6 +10,26 @@ const FourthPrizeHome = ({setLiveDraw}) => {
     const [blink, setBlink] = useState(false);
     const [bottomText, setBottomText] = useState(false);
     const [status, setStatus] = useState(true);
+    const [resultData, setResultData] = useState([]);
+    const location = useLocation();
+    const data = location.state.row || {};
+  
+    const fetchThirdResult = async () => {
+      try {
+        let res = await getFourthResultData(data.game_date, data.game_name);
+        console.log("fuck", res)
+        if (res && res.status) {
+          setResultData(res?.data);
+        }
+        console.log("ressssss", res);
+      } catch (error) {
+        console.log("errorrrrr", error);
+      }
+    };
+
+    useEffect(() => {
+      fetchThirdResult();
+    }, []);
   
     useEffect(() => {
       const typeText = setTimeout(() => {
@@ -59,20 +81,20 @@ const FourthPrizeHome = ({setLiveDraw}) => {
             <span>LIVE NEXT DRAW</span>
           </div>
           <div className={`secoundPrizeNo ${blink ? "blink" : "hidden"}`}>
-            <span className="number">2</span>
-            <span className="nd">nd</span> <span>Prize</span>
+            <span className="number">4</span>
+            <span className="nd">th</span> <span>Prize</span>
           </div>
           <div className="bottom_text">
             <ul className={bottomText ? "dynamik_text_bottom" : "hidden"}>
               <li>
-                <span>ON 5 DIGITS WITH 10 TIMES</span>
+                <span>ON 5 DIGITS WITH 60 TIMES</span>
               </li>
             </ul>
           </div>
         </dib>
       </div>
     ) : (
-      <FourthPriceResult setLiveDraw={setLiveDraw}  />
+      <FourthPriceResult setLiveDraw={setLiveDraw} resultData={resultData}  />
     )
 }
 

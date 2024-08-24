@@ -12,7 +12,7 @@ const beepSound = new Audio(
 
 const Main = () => {
   const location = useLocation();
-  const data  = location.state.row || {};
+  const data = location.state.row || {};
   const [count, setCount] = useState(10);
   const [status, setStatus] = useState(false);
   const [color, setColor] = useState(false);
@@ -20,25 +20,25 @@ const Main = () => {
   const [blink, setBlink] = useState(false);
   const [liveDraw, setLiveDraw] = useState(false);
   const [home, setHome] = useState(true);
-  const [resultData, setResultData] = useState({})
- 
-  console.log("resultData",  resultData)
+  const [resultData, setResultData] = useState({});
+
+  console.log("locationData", data);
 
   const fetchSpinData = async () => {
     try {
       let res = await getFirstResult(data.game_date, data.game_name);
-      if(res && res.status) {
-        setResultData(res?.data?.[0])
+      if (res && res.status) {
+        setResultData(res?.data?.[0]);
       }
-      console.log("ressssss", res)
+      console.log("ressssss", res);
     } catch (error) {
-      console.log("errorrrrr", error)
+      console.log("errorrrrr", error);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchSpinData()
-  }, [])
+    fetchSpinData();
+  }, []);
 
   useEffect(() => {
     if (!home) {
@@ -57,7 +57,6 @@ const Main = () => {
           }
         });
       }, 1500);
-      
 
       const fallingText = setTimeout(() => {
         setfallingText(true);
@@ -179,7 +178,9 @@ const Main = () => {
             </div>
             {/* )} */}
             <div className="flex justify-center items-center number_main_div">
-              <div className={`h-[81px] w-24 bg-white text-black text-7xl count_number`}>
+              <div
+                className={`h-[81px] w-24 bg-white text-black text-7xl count_number`}
+              >
                 <span
                   className={`${
                     formattedCount === "00" ? (blink ? "blink" : "") : ""
@@ -237,7 +238,7 @@ const Main = () => {
       <div className="flex justify-around mt-[23px] bottom_div">
         <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-64 h-12 draw_date_time">
           <p className="w-full flex justify-center items-center bg-red-700 text-white rounded rounded-full font-bold">
-            DRAW DATE - 11.08.2024
+            DRAW DATE - {data.game_date}
           </p>
         </div>
         <div className="">
@@ -245,7 +246,14 @@ const Main = () => {
         </div>
         <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-56 h-12 draw_date_time">
           <p className="w-full flex justify-center items-center bg-red-700 text-white rounded rounded-full font-bold">
-            DRAW TIME - 10.00PM
+            DRAW TIME -{" "}
+            {data.game_name === "Morning"
+              ? "10:00 AM"
+              : data.game_name === "Noon"
+              ? "2:00 PM"
+              : data.game_name === "Evening"
+              ? "04:00 PM"
+              : ""}
           </p>
         </div>
       </div>

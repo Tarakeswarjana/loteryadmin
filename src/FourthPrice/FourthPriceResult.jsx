@@ -1,59 +1,51 @@
-import React, { useEffect, useState } from 'react'
-import SlotMechine from '../slotMechine/SlotMechine';
-const audio = new Audio(require("../../src/assets/bicycle-wheel-spinning-49716-[AudioTrimmer.com].mp3"));
+import React, { useEffect, useState } from "react";
+import SlotMechine from "../slotMechine/SlotMechine";
+const audio = new Audio(
+  require("../../src/assets/bicycle-wheel-spinning-49716-[AudioTrimmer.com].mp3")
+);
 
-const FourthPriceResult = ({ setLiveDraw }) => {
-    const results = [
-        7985, 1248, 9875, 5856, 2154, 2589, 1254, 4561, 3256, 8653,
-        1185, 1048, 9375, 5056, 7154, 3589, 9254, 8561, 1256, 5653,
-    ];
-    const results1 = [
-        7985, 1248, 9875, 5856, 2154, 2589, 1254, 4561, 3256, 8653,
-        1185, 1048, 9375, 5056, 7154, 3589, 9254, 8561, 1256, 5653,
-    ];
-    const results2 = [
-        7085, 1048, 4875, 7856, 9154, 2389, 5254, 3561, 6256, 9653,
-        8185, 9048, 6375, 5056, 2154, 3389, 9554, 6561, 1956, 8653,
-    ];
+const FourthPriceResult = ({ setLiveDraw, resultData }) => {
 
-    useEffect(() => {
-        setLiveDraw(true);
-    }, [setLiveDraw]);
+  console.log("sexx", resultData)
+  useEffect(() => {
+    setLiveDraw(true);
+  }, [setLiveDraw]);
 
-    useEffect(() => {
-        audio.play();
-        const stopAudio = setTimeout(() => {
-            audio.pause();
-            audio.currentTime = 0;
-        }, 9500);
+  useEffect(() => {
+    audio.play();
+    const stopAudio = setTimeout(() => {
+      audio.pause();
+      audio.currentTime = 0;
+    }, 9500);
 
-        return () => {
-            clearTimeout(stopAudio);
-            audio.pause();
-        };
-    }, []);
+    return () => {
+      clearTimeout(stopAudio);
+      audio.pause();
+    };
+  }, []);
 
-    return  (
-        <div className="second_result">
-            <div className="bg-black h-[77vh] border-l-2 ">
-                <div className="second_inner">
-                    {results &&
-                        results.map((endval, index) => {
-                            return (
-                                <div className="slot_machines" key={index}>
-                                    <SlotMechine
-                                        duration={10}
-                                        endNumbers={endval}
-                                        setvalueStart
-                                        rotate
-                                    />
-                                </div>
-                            );
-                        })}
+  return (
+    <div className="fourth_result">
+      <div className="bg-black h-[77vh] border-l-2 ">
+        <div className="fourth_inner">
+          {resultData &&
+            resultData.map((endval, index) => {
+              return (
+                <div className="slot_machines_fourth" key={index}>
+                  <SlotMechine
+                    duration={10}
+                    endNumbers={endval}
+                    setvalueStart
+                    rotate
+                    fourth={true}
+                  />
                 </div>
-            </div>
+              );
+            })}
         </div>
-    );
-}
+      </div>
+    </div>
+  );
+};
 
-export default FourthPriceResult
+export default FourthPriceResult;

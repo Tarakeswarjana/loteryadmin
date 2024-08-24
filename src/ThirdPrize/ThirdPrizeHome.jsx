@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ThirdPrizeResult from "./ThirdPrizeResult";
+import { getSecoundThirdResult } from "../Utils/AllApiCals";
+import { useLocation } from "react-router-dom";
 
 const ThirdPrizeHome = ({setLiveDraw}) => {
   const [textType, setTextType] = useState(false);
@@ -8,6 +10,27 @@ const ThirdPrizeHome = ({setLiveDraw}) => {
   const [blink, setBlink] = useState(false);
   const [bottomText, setBottomText] = useState(false);
   const [status, setStatus] = useState(true);
+  const [resultData, setResultData] = useState([]);
+  const location = useLocation();
+  const data = location.state.row || {};
+
+  const fetchThirdResult = async () => {
+    try {
+      let res = await getSecoundThirdResult(data.game_date, data.game_name);
+      if (res && res.status) {
+        let filterData = res?.data?.map((item) => item["3rdresult"]);
+        setResultData(filterData);
+      }
+      console.log("ressssss", res);
+    } catch (error) {
+      console.log("errorrrrr", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchThirdResult();
+  }, []);
+
 
   useEffect(() => {
     const typeText = setTimeout(() => {
@@ -71,7 +94,7 @@ const ThirdPrizeHome = ({setLiveDraw}) => {
       </div>
     </div>
   ) : (
-    <ThirdPrizeResult setLiveDraw={setLiveDraw} />
+    <ThirdPrizeResult setLiveDraw={setLiveDraw} resultData={resultData} />
   )
 };
 

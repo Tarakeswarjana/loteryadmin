@@ -25,23 +25,23 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
 
     // Zoom after 8 seconds
     const zoomTimer = setTimeout(() => {
-      // setZoomed("zoomed");
+      setZoomed("zoomed");
     }, 7000);
 
     const scrollLettersTimer = setTimeout(() => {
       if (letterWheelRef.current) {
-        // letterWheelRef.current.scrollIntoView({ behavior: "smooth" });
+        letterWheelRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }, 16500);
 
     const digitsTimer = setTimeout(() => {
       if (digitsRef.current) {
-        // digitsRef.current.scrollIntoView({ behavior: "smooth" });
+        digitsRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }, 18000);
 
     const changeState = setTimeout(() => {
-      // setStatus(false);
+      setStatus(false);
     }, 24000);
 
     return () => {
@@ -196,7 +196,7 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
             </ul>
           </div>
         </div>
-        <div className="w-[35px] h-full bg-black ml-[-20px] z-10 black_border"></div>
+        <div className="w-[35px] h-full bg-black ml-[-20px] black_border"></div>
 
         <div
           className="bg-black h-auto w-[72%] border-l-2 slot_component"

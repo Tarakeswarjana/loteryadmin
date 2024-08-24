@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SecoundPrizeResult from "./SecoundPrizeResult";
+import { useLocation } from "react-router-dom";
+import { getSecoundThirdResult } from "../Utils/AllApiCals";
 
 const SecoundPrizeHome = ({setLiveDraw}) => {
   const [textType, setTextType] = useState(false);
@@ -8,6 +10,26 @@ const SecoundPrizeHome = ({setLiveDraw}) => {
   const [blink, setBlink] = useState(false);
   const [bottomText, setBottomText] = useState(false);
   const [status, setStatus] = useState(true);
+  const [resultData, setResultData] = useState([]);
+  const location = useLocation();
+  const data = location.state.row || {};
+
+  const fetchSecoundResult = async () => {
+    try {
+      let res = await getSecoundThirdResult(data.game_date, data.game_name);
+      if (res && res.status) {
+        let filterData = res?.data?.map((item) => item["2ndresult"]);
+        setResultData(filterData);
+      }
+      console.log("ressssss", res);
+    } catch (error) {
+      console.log("errorrrrr", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchSecoundResult();
+  }, []);
 
   useEffect(() => {
     const typeText = setTimeout(() => {
@@ -46,7 +68,7 @@ const SecoundPrizeHome = ({setLiveDraw}) => {
 
   return status ? (
     <div className="bg-black fixed inset-0">
-      <dib className="flex flex-col justify-center items-center w-[52%] h-[100vh] mx-auto text-center second_main_div">
+      <dib className="flex flex-col  w-[52%] h-[100vh] mx-auto text-center second_main_div">
         <div className="typing_text_2_main_div">
           <ul className={textType ? "dynamik_text2" : "hidden"}>
             <li>
@@ -72,7 +94,7 @@ const SecoundPrizeHome = ({setLiveDraw}) => {
       </dib>
     </div>
   ) : (
-    <SecoundPrizeResult setLiveDraw={setLiveDraw}  />
+    <SecoundPrizeResult setLiveDraw={setLiveDraw} resultData={resultData}  />
   )
 };
 
