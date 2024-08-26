@@ -3,7 +3,7 @@ import FourthPriceResult from "./FourthPriceResult";
 import { useLocation } from "react-router-dom";
 import { getFourthResultData } from "../Utils/AllApiCals";
 
-const FourthPrizeHome = ({setLiveDraw}) => {
+const FourthPrizeHome = ({setLiveDraw, setPrizePosition}) => {
     const [textType, setTextType] = useState(false);
     const [textFall, setTextFall] = useState(false);
     const [showLine, setShowLine] = useState(false);
@@ -67,7 +67,7 @@ const FourthPrizeHome = ({setLiveDraw}) => {
     }, []);
   
     return status ? (
-      <div className="bg-black fixed inset-0">
+      <div className="bg-black fixed inset-0 z-10">
         <dib className="flex flex-col w-[52%] h-[100vh] mx-auto text-center second_main_div">
           <div className="typing_text_2_main_div">
             <ul className={textType ? "dynamik_text2" : "hidden"}>
@@ -94,7 +94,7 @@ const FourthPrizeHome = ({setLiveDraw}) => {
         </dib>
       </div>
     ) : (
-      <FourthPriceResult setLiveDraw={setLiveDraw} resultData={resultData}  />
+      <FourthPriceResult setLiveDraw={setLiveDraw} resultData={resultData} setPrizePosition={setPrizePosition}  />
     )
 }
 

@@ -3,7 +3,7 @@ import ThirdPrizeResult from "./ThirdPrizeResult";
 import { getSecoundThirdResult } from "../Utils/AllApiCals";
 import { useLocation } from "react-router-dom";
 
-const ThirdPrizeHome = ({setLiveDraw}) => {
+const ThirdPrizeHome = ({setLiveDraw, setPrizePosition}) => {
   const [textType, setTextType] = useState(false);
   const [textFall, setTextFall] = useState(false);
   const [showLine, setShowLine] = useState(false);
@@ -67,7 +67,7 @@ const ThirdPrizeHome = ({setLiveDraw}) => {
     };
   }, []);
   return status ? (
-    <div className="bg-black fixed inset-0">
+    <div className="bg-black fixed inset-0 z-10">
       <div className="flex flex-col  w-[52%] h-[100vh] mx-auto text-center">
         <div className="typing_text_2_main_div">
           <ul className={textType ? "dynamik_text2" : "hidden"}>
@@ -94,7 +94,7 @@ const ThirdPrizeHome = ({setLiveDraw}) => {
       </div>
     </div>
   ) : (
-    <ThirdPrizeResult setLiveDraw={setLiveDraw} resultData={resultData} />
+    <ThirdPrizeResult setLiveDraw={setLiveDraw} resultData={resultData} setPrizePosition={setPrizePosition} />
   )
 };
 

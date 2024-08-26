@@ -5,7 +5,7 @@ import SecoundPrizeHome from "../SecoundPrize/SecoundPrizeHome";
 import logo from "../images/logo/25.png";
 const audio = require("../../src/assets/bicycle-wheel-spinning-49716-[AudioTrimmer.com].mp3");
 
-function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
+function CustomWheel2({ no, letter, digits, rotate, setLiveDraw, setPrizePosition }) {
   const [rotationAngleNumber, setRotationAngleNumber] = useState(0);
   const [rotationAngleLetter, setRotationAngleLetter] = useState(0);
   const [inputValueNumber, setInputValueNumber] = useState("");
@@ -227,7 +227,7 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw }) {
       </div>
     </div>
   ) : (
-    <SecoundPrizeHome setLiveDraw={setLiveDraw} />
+    <SecoundPrizeHome setLiveDraw={setLiveDraw} setPrizePosition={setPrizePosition} />
   );
 }
 

@@ -3,7 +3,7 @@ import "./Main.css";
 import middle from "../images/draw_img.png";
 import first from "../images/first.png";
 import logo from "../images/logo/logo.png";
-import prize from "../images/prize.png"
+import prize from "../images/prize.png";
 import CustomWheel2 from "../customwheel2/CustomWheel2";
 import { getFirstResult } from "../Utils/AllApiCals";
 import { useLocation } from "react-router-dom";
@@ -21,6 +21,7 @@ const Main = () => {
   const [blink, setBlink] = useState(false);
   const [liveDraw, setLiveDraw] = useState(false);
   const [home, setHome] = useState(true);
+  const [prizePosition, setPrizePosition] = useState("1st")
   const [resultData, setResultData] = useState({});
 
   console.log("locationData", data);
@@ -72,7 +73,7 @@ const Main = () => {
       }, 13000);
 
       const changeState = setTimeout(() => {
-        // setStatus(true);
+        setStatus(true);
         beepSound.pause();
       }, [19000]);
 
@@ -108,7 +109,7 @@ const Main = () => {
   ) : (
     <div className="main_div">
       {/* top */}
-      <div className="flex justify-around pt-4">
+      <div className="flex justify-around pt-2">
         <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-72 h-[56px] ">
           <p className="w-full text-center bg-yellow-400 text-black rounded rounded-full font-bold top_left">
             PLAY LIVE DRAW ON <span className="text-red-700">YOUTUBE</span>{" "}
@@ -117,15 +118,19 @@ const Main = () => {
           </p>
         </div>
         <div className="">
-          {/* <img className="lottery" src={middle} alt="middle" /> */}
           <div class="draw">
             <img src={middle} alt="middle image" />
+            <h2 className="draw_text1">Hongkong lotteries</h2>
+            <h3 className="draw_text2">DRAW TIME (12:30-16:30-20:30)PM </h3>
+            {/* <div className="curve_pxwell">
+              <h5>PXWELL</h5>
+              <h5>PXWELL</h5>
+              <h5>PXWELL</h5>
+              <h5>PXWELL</h5>
+              <h5>PXWELL</h5>
+              <h5>PXWELL</h5>
+            </div> */}
           </div>
-          <div class="draw-1">
-            <h2>Singapore lotteries</h2>
-            <h3>DRAW TIME (12:30-16:30-20:30)PM </h3>
-          </div>
-
         </div>
         <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-56 h-[56px]">
           <p className="w-full flex justify-center items-center bg-yellow-400 text-black rounded rounded-full font-bold top_right">
@@ -134,7 +139,7 @@ const Main = () => {
         </div>
       </div>
       {/* middle */}
-      <div className="mt-4 w-[96%] h-[78vh] mx-auto flex justify-between main_middle">
+      <div className="mt-4 w-[98%] h-[78vh] mx-auto flex justify-between main_middle">
         <div className="w-[50px] h-[100%] flex justify-between items-center mr-2 ">
           <div className="w-full h-[90%] flex flex-col justify-evenly items-center text-black text-5xl rounded rounded-full font-bold pxwell_main">
             <p className="pxwell font-extrabold">P</p>
@@ -146,7 +151,7 @@ const Main = () => {
           </div>
         </div>
         {liveDraw && (
-          <div className="w-[50px] h-[100%] flex justify-between items-center mr-2 ml-8 live_draw_main">
+          <div className="w-[50px] h-[100%] flex justify-between items-center mr-2 live_draw_main">
             <div className="w-full h-[90%] flex flex-col justify-evenly items-center text-black text-5xl rounded rounded-full font-bold live_draw">
               <p className="pxwell font-extrabold">L</p>
               <p className="pxwell font-extrabold">I</p>
@@ -172,8 +177,9 @@ const Main = () => {
             <div className="fall_blink_text ">
               <h4 className="text-9xl font-extrabold mt-8 mb-8 blink_text ">
                 <div
-                  className={`word ${fallingText ? "block" : "hidden"} ${color ? "colorChange" : ""
-                    } ${blink ? "blink" : ""}`}
+                  className={`word ${fallingText ? "block" : "hidden"} ${
+                    color ? "colorChange" : ""
+                  } ${blink ? "blink" : ""}`}
                 >
                   <span>P</span>
                   <span>X</span>
@@ -190,8 +196,9 @@ const Main = () => {
                 className={`h-[81px] w-24 bg-white text-black text-7xl count_number`}
               >
                 <span
-                  className={`${formattedCount === "00" ? (blink ? "blink" : "") : ""
-                    }`}
+                  className={`${
+                    formattedCount === "00" ? (blink ? "blink" : "") : ""
+                  }`}
                 >
                   00
                 </span>
@@ -200,8 +207,9 @@ const Main = () => {
                 className={`h-[81px] w-24 bg-white text-black text-7xl ml-2 count_number`}
               >
                 <span
-                  className={`${formattedCount === "00" ? (blink ? "blink" : "") : ""
-                    }`}
+                  className={`${
+                    formattedCount === "00" ? (blink ? "blink" : "") : ""
+                  }`}
                 >
                   {formattedCount}
                 </span>
@@ -216,6 +224,7 @@ const Main = () => {
               digits={resultData?.result}
               rotate={true}
               setLiveDraw={setLiveDraw}
+              setPrizePosition={setPrizePosition}
             />
           </div>
         )}
@@ -233,10 +242,7 @@ const Main = () => {
           <div className="prize">
             <div className="first">
               <img src={prize} alt="prize" />
-              <h4>1st</h4>
-            </div>
-            <div className="prize_text">
-         
+              <h4 className="prize_number">{prizePosition}</h4>
             </div>
             <div className="pri">
               <h2>prize</h2>
@@ -251,7 +257,6 @@ const Main = () => {
           </div>
         </div>
 
-
         <div className="w-[50px] h-[100%] flex justify-between items-center ml-2 ">
           <div className="w-full h-[90%] flex flex-col justify-evenly items-center text-black text-5xl rounded rounded-full font-bold pxwell_main">
             <p className="pxwell font-extrabold">P</p>
@@ -264,7 +269,7 @@ const Main = () => {
         </div>
       </div>
       {/* bottom */}
-      <div className="flex justify-around mt-[23px] bottom_div">
+      <div className="flex justify-around mt-[12px] bottom_div">
         <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-64 h-12 draw_date_time">
           <p className="w-full flex justify-center items-center bg-red-700 text-white rounded rounded-full font-bold">
             DRAW DATE - {data.game_date}
@@ -279,10 +284,10 @@ const Main = () => {
             {data.game_name === "Morning"
               ? "10:00 AM"
               : data.game_name === "Noon"
-                ? "2:00 PM"
-                : data.game_name === "Evening"
-                  ? "04:00 PM"
-                  : ""}
+              ? "2:00 PM"
+              : data.game_name === "Evening"
+              ? "04:00 PM"
+              : ""}
           </p>
         </div>
       </div>

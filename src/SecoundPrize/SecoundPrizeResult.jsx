@@ -5,11 +5,12 @@ const audio = new Audio(
   require("../../src/assets/bicycle-wheel-spinning-49716-[AudioTrimmer.com].mp3")
 );
 
-const SecoundPrizeResult = ({ setLiveDraw, resultData }) => {
+const SecoundPrizeResult = ({ setLiveDraw, resultData, setPrizePosition }) => {
   const [status, setStatus] = useState(true);
 
   useEffect(() => {
     setLiveDraw(true);
+    setPrizePosition("2nd")
   }, [setLiveDraw]);
 
   useEffect(() => {
@@ -51,7 +52,7 @@ const SecoundPrizeResult = ({ setLiveDraw, resultData }) => {
       </div>
     </div>
   ) : (
-    <ThirdPrizeHome setLiveDraw={setLiveDraw} />
+    <ThirdPrizeHome setLiveDraw={setLiveDraw} setPrizePosition={setPrizePosition} />
   );
 };
 
