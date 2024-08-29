@@ -44,7 +44,7 @@ console.log("fourth",fourth)
           <hr className="dot" />
         </div>
         <div className="bg-gray-300 w-[92%] mx-auto h-[200px] flex justify-center item-center p-[12px] slot_main_div">
-          <div className="bg-gray-500 h-[43px]">
+          <div className="bg-gray-500 h-[43px] bg_gray_div">
             <SlotCounter
               ref={counterRef}
               startValue={staticStartVal}

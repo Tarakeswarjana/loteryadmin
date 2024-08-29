@@ -5,39 +5,64 @@ const audio = new Audio(
 );
 
 const FourthPriceResult = ({ setLiveDraw, resultData, setPrizePosition }) => {
+  const [currentBatch, setCurrentBatch] = useState(0); // To track which batch is being displayed
+  const [currentResults, setCurrentResults] = useState([]);
+  const [isRotating, setIsRotating] = useState(false);
 
-  console.log("fourth_data", resultData)
   useEffect(() => {
     setLiveDraw(true);
-    setPrizePosition("4th")
-  }, [setLiveDraw]);
+    setPrizePosition("4th");
+  }, [setLiveDraw, setPrizePosition]);
 
   useEffect(() => {
+    if (resultData?.length > 0) {
+      // Start with the first batch
+      showResults(0);
+    }
+  }, [resultData]);
+
+  const showResults = (batchIndex) => {
+    const start = batchIndex * 20;
+    const end = start + 20;
+    const newResults = resultData.slice(start, end);
+
+    setCurrentResults(newResults);
+    setIsRotating(true);
     audio.play();
-    const stopAudio = setTimeout(() => {
+
+    // Stop the slot machine and the audio after 10 seconds
+    const stopRotationTimer = setTimeout(() => {
+      setIsRotating(false);
       audio.pause();
       audio.currentTime = 0;
-    }, 9500);
+      if (batchIndex < 2) {
+        // Wait 5 seconds and then start the next batch
+        setTimeout(() => {
+          setCurrentBatch(batchIndex + 1);
+          showResults(batchIndex + 1);
+        }, 6000);
+      }
+    }, 10000); // 10 seconds duration
 
+    // Cleanup the timer when the component unmounts
     return () => {
-      clearTimeout(stopAudio);
-      audio.pause();
+      clearTimeout(stopRotationTimer);
     };
-  }, []);
+  };
 
   return (
     <div className="fourth_result">
       <div className="bg-black h-[77vh] border-l-2 ">
         <div className="fourth_inner">
-          {resultData &&
-            resultData.map((endval, index) => {
+          {currentResults &&
+            currentResults.map((endval, index) => {
               return (
                 <div className="slot_machines_fourth" key={index}>
                   <SlotMechine
-                    duration={10}
+                    duration={10} // Duration for the slot machine rotation
                     endNumbers={endval}
                     setvalueStart
-                    rotate
+                    rotate={isRotating}
                     fourth={true}
                   />
                 </div>

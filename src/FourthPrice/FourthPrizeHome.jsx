@@ -17,9 +17,11 @@ const FourthPrizeHome = ({setLiveDraw, setPrizePosition}) => {
     const fetchThirdResult = async () => {
       try {
         let res = await getFourthResultData(data.game_date, data.game_name);
-        console.log("fuck", res)
         if (res && res.status) {
-          setResultData(res?.data);
+          if (res && res.status) {
+            let filterData = res?.data?.map((item) => item['5thresult']);
+            setResultData(filterData);
+          }
         }
         console.log("ressssss", res);
       } catch (error) {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Main.css";
 import middle from "../images/draw_img.png";
 import first from "../images/first.png";
-import logo from "../images/logo/logo.png";
+import logo from "../images/hongkonglogo.png";
 import prize from "../images/prize.png";
 import CustomWheel2 from "../customwheel2/CustomWheel2";
 import { getFirstResult } from "../Utils/AllApiCals";
@@ -21,7 +21,7 @@ const Main = () => {
   const [blink, setBlink] = useState(false);
   const [liveDraw, setLiveDraw] = useState(false);
   const [home, setHome] = useState(true);
-  const [prizePosition, setPrizePosition] = useState("1st")
+  const [prizePosition, setPrizePosition] = useState("1st");
   const [resultData, setResultData] = useState({});
 
   console.log("locationData", data);
@@ -109,8 +109,8 @@ const Main = () => {
   ) : (
     <div className="main_div">
       {/* top */}
-      <div className="flex justify-around pt-2">
-        <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-72 h-[56px] ">
+      <div className="flex justify-around main_div_second">
+        <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-72 h-[56px] top_left_uTube">
           <p className="w-full text-center bg-yellow-400 text-black rounded rounded-full font-bold top_left">
             PLAY LIVE DRAW ON <span className="text-red-700">YOUTUBE</span>{" "}
             <br />
@@ -122,17 +122,9 @@ const Main = () => {
             <img src={middle} alt="middle image" />
             <h2 className="draw_text1">Hongkong lotteries</h2>
             <h3 className="draw_text2">DRAW TIME (12:30-16:30-20:30)PM </h3>
-            {/* <div className="curve_pxwell">
-              <h5>PXWELL</h5>
-              <h5>PXWELL</h5>
-              <h5>PXWELL</h5>
-              <h5>PXWELL</h5>
-              <h5>PXWELL</h5>
-              <h5>PXWELL</h5>
-            </div> */}
           </div>
         </div>
-        <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-56 h-[56px]">
+        <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-56 h-[56px] top_right_uTube">
           <p className="w-full flex justify-center items-center bg-yellow-400 text-black rounded rounded-full font-bold top_right">
             LIVE FROM HONG KONG
           </p>
@@ -140,7 +132,7 @@ const Main = () => {
       </div>
       {/* middle */}
       <div className="mt-4 w-[98%] h-[78vh] mx-auto flex justify-between main_middle">
-        <div className="w-[50px] h-[100%] flex justify-between items-center mr-2 ">
+        <div className="w-[50px] h-[100%] flex justify-between items-center mr-2 main_middle_second ">
           <div className="w-full h-[90%] flex flex-col justify-evenly items-center text-black text-5xl rounded rounded-full font-bold pxwell_main">
             <p className="pxwell font-extrabold">P</p>
             <p className="pxwell font-extrabold">X</p>
@@ -257,8 +249,8 @@ const Main = () => {
           </div>
         </div>
 
-        <div className="w-[50px] h-[100%] flex justify-between items-center ml-2 ">
-          <div className="w-full h-[90%] flex flex-col justify-evenly items-center text-black text-5xl rounded rounded-full font-bold pxwell_main">
+        <div className="w-[50px] h-[100%] flex justify-between items-center ml-2 pxwell_right_main">
+          <div className="w-full h-[90%] flex flex-col justify-evenly items-center text-black text-5xl rounded rounded-full font-bold pxwell_main pexel_right">
             <p className="pxwell font-extrabold">P</p>
             <p className="pxwell font-extrabold">X</p>
             <p className="pxwell font-extrabold">W</p>
