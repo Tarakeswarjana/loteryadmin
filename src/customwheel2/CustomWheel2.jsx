@@ -31,18 +31,18 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw, setPrizePositio
 
     const scrollLettersTimer = setTimeout(() => {
       if (letterWheelRef.current) {
-        // letterWheelRef.current.scrollIntoView({ behavior: "smooth" });
+        letterWheelRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }, 16500);
 
     const digitsTimer = setTimeout(() => {
       if (digitsRef.current) {
-        // digitsRef.current.scrollIntoView({ behavior: "smooth" });
+        digitsRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }, 18000);
 
     const changeState = setTimeout(() => {
-      // setStatus(false);
+      setStatus(false);
     }, 24000);
 
     return () => {
