@@ -5,7 +5,7 @@ import first from "../images/first.png";
 import logo from "../images/hongkonglogo.png";
 import prize from "../images/prize.png";
 import CustomWheel2 from "../customwheel2/CustomWheel2";
-import { getFirstResult } from "../Utils/AllApiCals";
+import { getAllTime, getFirstResult, getSingleTime } from "../Utils/AllApiCals";
 import { useLocation } from "react-router-dom";
 const beepSound = new Audio(
   require("../assets/piep-33489-[AudioTrimmer.com].mp3")
@@ -23,6 +23,9 @@ const Main = () => {
   const [home, setHome] = useState(true);
   const [prizePosition, setPrizePosition] = useState("1st");
   const [resultData, setResultData] = useState({});
+  const [allTime, setAllTime] = useState([]);
+  const [singleDrawTime, setSingleDrawTime] = useState("");
+
 
   console.log("locationData", data);
 
@@ -37,9 +40,35 @@ const Main = () => {
       console.log("errorrrrr", error);
     }
   };
+  const fetcallDrawTime = async () => {
+    try {
+      let res = await getAllTime()
+      if (res && res.status) {
+        setAllTime(res.data)
+      }
+      console.log("timess", res);
+    } catch (error) {
+      console.log("errorrrrr", error);
+    }
+  };
+
+  const fetcSingleDrawTime = async () => {
+    try {
+      let res = await getSingleTime(data.game_name)
+      if (res && res.status) {
+        console.log(res, "88888")
+        setSingleDrawTime(res.data[0].game_time)
+      }
+      console.log("timess", res);
+    } catch (error) {
+      console.log("errorrrrr", error);
+    }
+  };
 
   useEffect(() => {
     fetchSpinData();
+    fetcallDrawTime()
+    fetcSingleDrawTime()
   }, []);
 
   useEffect(() => {
@@ -121,7 +150,7 @@ const Main = () => {
           <div class="draw">
             <img src={middle} alt="middle image" />
             <h2 className="draw_text1">Hongkong lotteries</h2>
-            <h3 className="draw_text2">DRAW TIME (12:30-16:30-20:30)PM </h3>
+            <h3 className="draw_text2">DRAW TIME {allTime.map((ele, id) => { return `${ele.game_time},` })} </h3>
           </div>
         </div>
         <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-56 h-[56px] top_right_uTube">
@@ -169,9 +198,8 @@ const Main = () => {
             <div className="fall_blink_text ">
               <h4 className="text-9xl font-extrabold mt-8 mb-8 blink_text ">
                 <div
-                  className={`word ${fallingText ? "block" : "hidden"} ${
-                    color ? "colorChange" : ""
-                  } ${blink ? "blink" : ""}`}
+                  className={`word ${fallingText ? "block" : "hidden"} ${color ? "colorChange" : ""
+                    } ${blink ? "blink" : ""}`}
                 >
                   <span>P</span>
                   <span>X</span>
@@ -188,9 +216,8 @@ const Main = () => {
                 className={`h-[81px] w-24 bg-white text-black text-7xl count_number`}
               >
                 <span
-                  className={`${
-                    formattedCount === "00" ? (blink ? "blink" : "") : ""
-                  }`}
+                  className={`${formattedCount === "00" ? (blink ? "blink" : "") : ""
+                    }`}
                 >
                   00
                 </span>
@@ -199,9 +226,8 @@ const Main = () => {
                 className={`h-[81px] w-24 bg-white text-black text-7xl ml-2 count_number`}
               >
                 <span
-                  className={`${
-                    formattedCount === "00" ? (blink ? "blink" : "") : ""
-                  }`}
+                  className={`${formattedCount === "00" ? (blink ? "blink" : "") : ""
+                    }`}
                 >
                   {formattedCount}
                 </span>
@@ -273,13 +299,7 @@ const Main = () => {
         <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-56 h-12 draw_date_time">
           <p className="w-full flex justify-center items-center bg-red-700 text-white rounded rounded-full font-bold">
             DRAW TIME -{" "}
-            {data.game_name === "Morning"
-              ? "10:00 AM"
-              : data.game_name === "Noon"
-              ? "2:00 PM"
-              : data.game_name === "Evening"
-              ? "04:00 PM"
-              : ""}
+            {singleDrawTime}
           </p>
         </div>
       </div>

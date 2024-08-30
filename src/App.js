@@ -9,6 +9,7 @@ import DashBoard from './Components/DashBoard/DashBoard';
 import Login from './Auth/Login';
 import Main from './first/Main';
 import "./Responsive.css"
+import LiveUrl from './Components/LiveUrl/LiveUrl';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path='/morning' element={<Category gameTime={"Morning"} />} />
           <Route path='/noon' element={<Category gameTime={"Noon"} />} />
           <Route path='/evening' element={<Category gameTime={"Evening"} />} />
+          <Route path='/liveurl/:gname' element={<LiveUrl />} />
 
         </Route>
         <Route path='/frontendView/:game_name' element={<Main />} />

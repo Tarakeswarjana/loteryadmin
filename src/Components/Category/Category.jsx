@@ -35,11 +35,21 @@ function Category({ gameTime }) {
     {
       name: "Id",
       selector: (row) => row.sl,
+      // style: {
+      //   backgroundColor: 'rgba(63, 195, 128, 0.9)',
+      //   maxWidth: "10px",
+      //   color: 'white',
+      // }
     },
 
     {
       name: "Game_date",
       selector: (row) => row.game_date,
+      // style: {
+
+      //   maxWidth: "40px",
+
+      // }
     },
     {
       name: "Game_name",
@@ -54,9 +64,35 @@ function Category({ gameTime }) {
       name: "First Digit",
       selector: (row) => row.first_digit,
     },
+
+
+
+
+
     {
       name: "Second Digit",
       selector: (row) => row.second_digit,
+    },
+    {
+      name: "Live Url",
+      selector: (row) => {
+        console.log("noon", row)
+        return (
+          <div className="w-[400px] overflow-scroll">
+
+            <button
+              onClick={(e) => {
+                navigate(`/liveurl/${row.game_name}`, { state: { row } });
+                // handleEdit(row.sl)
+                // console.log("RowData:", row);
+              }}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 ml-1 rounded"
+            >
+              liveUrl
+            </button>
+          </div>
+        );
+      },
     },
 
     {
@@ -75,7 +111,7 @@ function Category({ gameTime }) {
             </button>
             <button
               onClick={(e) => {
-                navigate(`/frontendView/${row.game_name}`, {state : {row}});
+                navigate(`/frontendView/${row.game_name}`, { state: { row } });
                 // handleEdit(row.sl)
                 // console.log("RowData:", row);
               }}
@@ -261,6 +297,7 @@ function Category({ gameTime }) {
             type: ele?.type,
             id: ele?.id,
             spin_time: ele?.spin_time,
+
           };
         });
         setCategoryData(newArr);
@@ -290,8 +327,10 @@ function Category({ gameTime }) {
             >
               Add new Category
             </button>
+
+
           </div>
-          <form class="flex justify-between items-center gap-1 w-800 mx-auto p-1 border border-gray-300 rounded-lg shadow-md">
+          {/* <form class="flex justify-between items-center gap-1 w-800 mx-auto p-1 border border-gray-300 rounded-lg shadow-md">
             <div className="flex gap-4">
               <label class="flex flex-col w-40 font-semibold text-gray-800">
                 Text Input:
@@ -319,18 +358,18 @@ function Category({ gameTime }) {
                 Search
               </button>
             </label>
-          </form>
+          </form> */}
           <DataTable
             columns={columns}
             data={categorydata}
             pagination
 
-            // progressPending={isLoading}
+          // progressPending={isLoading}
 
-            // paginationServer
-            // paginationTotalRows={totalrowCount}
-            // onChangePage={fetchAllCategory}
-            // noRowsPerPage={true}
+          // paginationServer
+          // paginationTotalRows={totalrowCount}
+          // onChangePage={fetchAllCategory}
+          // noRowsPerPage={true}
           />
         </div>
 

@@ -93,6 +93,11 @@ const getAllUnits = async (page, parent) => {
   return await HttpClient.get(endpoint);
 };
 
+
+
+
+
+
 /*-------- fetch spin and slotmachine data ----------*/
 
 const getFirstResult = async (gameDate, gameName) => {
@@ -109,6 +114,28 @@ const getFourthResultData = async (gameDate, gameName) => {
   const endpoint = `/fetch_fifth_result.php?game_date=${gameDate}&game_type=${gameName}`;
   return await HttpClient.get(endpoint);
 };
+
+const getAllTime = async (gameDate, gameName) => {
+  const endpoint = `/fetch_baji_timimng.php?game_type`;
+  return await HttpClient.get(endpoint);
+};
+const getSingleTime = async (gameName) => {
+  const endpoint = `/fetch_baji_timimng.php?game_type=${gameName}`;
+  return await HttpClient.get(endpoint);
+};
+
+const addLiveUrl = async (data) => {
+  console.log(data, "88899")
+  let endpoint = `/insertyoutubeUrl.php?embededUrl=${data.liveUrl}&game_type=${data.gname}&draw_time=${data.gtime}`
+  return await HttpClient.post(endpoint, data = {});
+}
+const fetchAllLiveUrl = async (data) => {
+  console.log(data, "88899")
+  let endpoint = `/fetch_youtubeUrl.php?game_type=${'Morning'}`
+  return await HttpClient.post(endpoint, data = {});
+}
+
+
 
 export {
   Loginfunc,
@@ -131,4 +158,8 @@ export {
   getFirstResult,
   getSecoundThirdResult,
   getFourthResultData,
+  getAllTime,
+  getSingleTime,
+  addLiveUrl,
+  fetchAllLiveUrl
 };
