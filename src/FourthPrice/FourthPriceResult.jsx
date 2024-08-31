@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import SlotMechine from "../slotMechine/SlotMechine";
 const audio = new Audio(
   require("../../src/assets/bicycle-wheel-spinning-49716-[AudioTrimmer.com].mp3")
 );
 
 const FourthPriceResult = ({ setLiveDraw, resultData, setPrizePosition }) => {
-  const [currentBatch, setCurrentBatch] = useState(0); // To track which batch is being displayed
+  // const [currentBatch, setCurrentBatch] = useState(0); // To track which batch is being displayed
   const [currentResults, setCurrentResults] = useState([]);
   const [isRotating, setIsRotating] = useState(false);
 
@@ -19,9 +19,9 @@ const FourthPriceResult = ({ setLiveDraw, resultData, setPrizePosition }) => {
       // Start with the first batch
       showResults(0);
     }
-  }, [resultData]);
+  }, [resultData, showResults]);
 
-  const showResults = (batchIndex) => {
+  const showResults = useCallback((batchIndex) => {
     const start = batchIndex * 20;
     const end = start + 20;
     const newResults = resultData.slice(start, end);
@@ -38,7 +38,7 @@ const FourthPriceResult = ({ setLiveDraw, resultData, setPrizePosition }) => {
       if (batchIndex < 2) {
         // Wait 5 seconds and then start the next batch
         setTimeout(() => {
-          setCurrentBatch(batchIndex + 1);
+          // setCurrentBatch(batchIndex + 1);
           showResults(batchIndex + 1);
         }, 6000);
       }
@@ -48,7 +48,7 @@ const FourthPriceResult = ({ setLiveDraw, resultData, setPrizePosition }) => {
     return () => {
       clearTimeout(stopRotationTimer);
     };
-  };
+  }, []);
 
   return (
     <div className="fourth_result">

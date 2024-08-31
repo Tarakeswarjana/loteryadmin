@@ -11,14 +11,14 @@ const SecoundPrizeResult = ({ setLiveDraw, resultData, setPrizePosition }) => {
   useEffect(() => {
     setLiveDraw(true);
     setPrizePosition("2nd")
-  }, [setLiveDraw]);
+  }, [setLiveDraw, setPrizePosition]);
 
   useEffect(() => {
     audio.play();
     const stopAudio = setTimeout(() => {
       audio.pause();
-      audio.currentTime = 0; 
-    }, 9500); 
+      audio.currentTime = 0;
+    }, 9500);
 
     const changeStatus = setTimeout(() => {
       setStatus(false);
@@ -27,7 +27,7 @@ const SecoundPrizeResult = ({ setLiveDraw, resultData, setPrizePosition }) => {
     return () => {
       clearTimeout(stopAudio);
       clearTimeout(changeStatus);
-      audio.pause(); 
+      audio.pause();
     };
   }, []);
 

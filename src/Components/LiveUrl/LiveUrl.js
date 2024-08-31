@@ -180,7 +180,7 @@ function LiveUrl() {
             setisLoading(false);
             console.log(err);
         }
-    }, [location])
+    }, [location,])
 
 
 
@@ -191,7 +191,7 @@ function LiveUrl() {
         // fetchVideos()
         fetchAllCategory();
         fetcallDrawTime()
-    }, []);
+    }, [fetchAllCategory, fetcallDrawTime]);
 
 
 

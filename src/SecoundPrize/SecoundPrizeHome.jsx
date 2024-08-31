@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import SecoundPrizeResult from "./SecoundPrizeResult";
 import { useLocation } from "react-router-dom";
 import { getSecoundThirdResult } from "../Utils/AllApiCals";
@@ -14,7 +14,7 @@ const SecoundPrizeHome = ({ setLiveDraw, setPrizePosition }) => {
   const location = useLocation();
   const data = location.state.row || {};
 
-  const fetchSecoundResult = async () => {
+  const fetchSecoundResult = useCallback(async () => {
     try {
       let res = await getSecoundThirdResult(data.game_date, data.game_name);
       if (res && res.status) {
@@ -25,11 +25,11 @@ const SecoundPrizeHome = ({ setLiveDraw, setPrizePosition }) => {
     } catch (error) {
       console.log("errorrrrr", error);
     }
-  };
+  }, [data]);
 
   useEffect(() => {
     fetchSecoundResult();
-  }, []);
+  }, [fetchSecoundResult]);
 
   useEffect(() => {
     const typeText = setTimeout(() => {

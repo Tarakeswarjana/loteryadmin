@@ -11,7 +11,7 @@ const ThirdPrizeResult = ({ setLiveDraw, resultData, setPrizePosition }) => {
   useEffect(() => {
     setLiveDraw(true);
     setPrizePosition("3rd")
-  }, [setLiveDraw]);
+  }, [setLiveDraw, setPrizePosition]);
 
   useEffect(() => {
     audio.play();

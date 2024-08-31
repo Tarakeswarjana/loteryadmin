@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import { useNavigate } from "react-router-dom";
 
@@ -274,7 +274,7 @@ function Category({ gameTime }) {
     });
   };
 
-  const fetchAllCategory = async () => {
+  const fetchAllCategory = useCallback(async () => {
     try {
       // let dataToSend = {
       //     // input_date: '2024-08-13',
@@ -306,11 +306,11 @@ function Category({ gameTime }) {
     } catch (err) {
       console.log(err);
     }
-  };
+  }, [gameTime]);
 
   useEffect(() => {
     fetchAllCategory();
-  }, []);
+  }, [fetchAllCategory]);
 
   return (
     <>

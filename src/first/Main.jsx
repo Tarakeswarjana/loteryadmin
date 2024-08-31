@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./Main.css";
 import middle from "../images/draw_img.png";
-import first from "../images/first.png";
+// import first from "../images/first.png";
 import logo from "../images/hongkonglogo.png";
 import prize from "../images/prize.png";
 import CustomWheel2 from "../customwheel2/CustomWheel2";
@@ -29,7 +29,7 @@ const Main = () => {
 
   console.log("locationData", data);
 
-  const fetchSpinData = async () => {
+  const fetchSpinData = useCallback(async () => {
     try {
       let res = await getFirstResult(data.game_date, data.game_name);
       if (res && res.status) {
@@ -39,7 +39,7 @@ const Main = () => {
     } catch (error) {
       console.log("errorrrrr", error);
     }
-  };
+  }, [data]);
   const fetcallDrawTime = async () => {
     try {
       let res = await getAllTime()
@@ -52,7 +52,7 @@ const Main = () => {
     }
   };
 
-  const fetcSingleDrawTime = async () => {
+  const fetcSingleDrawTime = useCallback(async () => {
     try {
       let res = await getSingleTime(data.game_name)
       if (res && res.status) {
@@ -63,13 +63,13 @@ const Main = () => {
     } catch (error) {
       console.log("errorrrrr", error);
     }
-  };
+  }, [data]);
 
   useEffect(() => {
     fetchSpinData();
     fetcallDrawTime()
     fetcSingleDrawTime()
-  }, []);
+  }, [fetcSingleDrawTime, fetchSpinData]);
 
   useEffect(() => {
     if (!home) {
@@ -148,7 +148,7 @@ const Main = () => {
         </div>
         <div className="">
           <div class="draw">
-            <img src={middle} alt="middle image" />
+            <img src={middle} alt="middle" />
             <h2 className="draw_text1">Hongkong lotteries</h2>
             <h3 className="draw_text2">DRAW TIME {allTime.map((ele, id) => { return `${ele.game_time},` })} </h3>
           </div>
