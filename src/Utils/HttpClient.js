@@ -91,3 +91,4 @@ const request = {
     BASE_URL,
 };
 export default request;
+export { BASE_URL }

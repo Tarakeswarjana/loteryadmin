@@ -124,15 +124,22 @@ const getSingleTime = async (gameName) => {
   return await HttpClient.get(endpoint);
 };
 
-const addLiveUrl = async (data) => {
-  console.log(data, "88899")
-  let endpoint = `/insertyoutubeUrl.php?embededUrl=${data.liveUrl}&game_type=${data.gname}&draw_time=${data.gtime}`
-  return await HttpClient.post(endpoint, data = {});
+const addLiveUrl = async (liveurl, gname, gdate, gtime) => {
+
+
+  console.log(gname, gdate, liveurl, "kkkk")
+  let endpoint = `/insertyoutubeUrl.php?embededUrl=${liveurl}&game_date=${gdate}&draw_time=${gtime}&game_type=${gname}`
+  return await HttpClient.post(endpoint, {});
 }
-const fetchAllLiveUrl = async (data) => {
-  console.log(data, "88899")
-  let endpoint = `/fetch_youtubeUrl.php?game_type=${'Morning'}`
-  return await HttpClient.post(endpoint, data = {});
+const fetchAllLiveUrl = async (gName, gDate) => {
+  console.log(gName, gDate, "88899")
+  let endpoint = `/fetch_youtubeUrl.php?game_type=${gName}&game_date=${gDate}`
+  // let endpoint = `/fetch_youtubeUrl.php?game_type=${gName}`
+  // let rress = await HttpClient.get(endpoint1)
+  // console.log(await HttpClient.get(endpoint1), rress, "Single urlss")
+
+  console.log(await HttpClient.get(endpoint), "all urlss")
+  return await HttpClient.get(endpoint);
 }
 
 
