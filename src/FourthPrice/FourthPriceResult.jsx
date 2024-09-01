@@ -13,14 +13,6 @@ const FourthPriceResult = ({ setLiveDraw, resultData, setPrizePosition }) => {
     setLiveDraw(true);
     setPrizePosition("4th");
   }, [setLiveDraw, setPrizePosition]);
-
-  useEffect(() => {
-    if (resultData?.length > 0) {
-      // Start with the first batch
-      showResults(0);
-    }
-  }, [resultData, showResults]);
-
   const showResults = useCallback((batchIndex) => {
     const start = batchIndex * 20;
     const end = start + 20;
@@ -48,7 +40,15 @@ const FourthPriceResult = ({ setLiveDraw, resultData, setPrizePosition }) => {
     return () => {
       clearTimeout(stopRotationTimer);
     };
-  }, []);
+  }, [resultData]);
+  useEffect(() => {
+    if (resultData?.length > 0) {
+      // Start with the first batch
+      showResults(0);
+    }
+  }, [resultData, showResults]);
+
+
 
   return (
     <div className="fourth_result">

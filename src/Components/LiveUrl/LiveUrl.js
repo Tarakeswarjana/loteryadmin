@@ -35,7 +35,7 @@ function LiveUrl() {
     //table row and collumn
 
 
-    const fetcallDrawTime = async () => {
+    const fetcallDrawTime = useCallback(async () => {
         try {
             let res = await getAllTime()
             if (res && res.status) {
@@ -45,7 +45,7 @@ function LiveUrl() {
         } catch (error) {
             console.log("errorrrrr", error);
         }
-    };
+    }, []);
 
     // function isDateInFuture(dateString) {
     //     const [day, month, year] = dateString.split('-').map(Number);

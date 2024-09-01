@@ -39,8 +39,8 @@ const Main = () => {
     } catch (error) {
       console.log("errorrrrr", error);
     }
-  }, [data]);
-  const fetcallDrawTime = async () => {
+  }, []);
+  const fetcallDrawTime = useCallback(async () => {
     try {
       let res = await getAllTime()
       if (res && res.status) {
@@ -50,7 +50,7 @@ const Main = () => {
     } catch (error) {
       console.log("errorrrrr", error);
     }
-  };
+  }, []);
 
   const fetcSingleDrawTime = useCallback(async () => {
     try {
@@ -63,7 +63,7 @@ const Main = () => {
     } catch (error) {
       console.log("errorrrrr", error);
     }
-  }, [data]);
+  }, []);
 
   useEffect(() => {
     fetchSpinData();

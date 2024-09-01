@@ -111,13 +111,13 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw, setPrizePositio
         "Please enter a valid number (30-45) and letter (A, B, C, D, E, G, H, J, K, L)"
       );
     }
-  }, [inputValueLetter, audio]);
+  }, [inputValueLetter, inputValueNumber, letters, numbers]);
 
   useEffect(() => {
     if (rotate && inputValueNumber && inputValueLetter) {
       handleRotate();
     }
-  }, [rotate, inputValueNumber, inputValueLetter], handleRotate);
+  }, [rotate, inputValueNumber, inputValueLetter], letters, numbers, rotationAngleLetter, rotationAngleNumber, handleRotate);
 
   return status ? (
     <div className={`${zoomed ? "zoomed" : ""} h-full relative wheel_main`}>
