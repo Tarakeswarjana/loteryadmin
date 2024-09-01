@@ -190,24 +190,24 @@ function Category({ gameTime }) {
     return true;
   };
 
-  function getRandomDateIn2022() {
-    // Start and end dates for 2022
-    const startOf2022 = new Date("2022-01-01T00:00:00Z");
-    const endOf2022 = new Date("2022-12-31T23:59:59Z");
+  // function getRandomDateIn2022() {
+  //   // Start and end dates for 2022
+  //   const startOf2022 = new Date("2022-01-01T00:00:00Z");
+  //   const endOf2022 = new Date("2022-12-31T23:59:59Z");
 
-    // Generate a random timestamp within the range
-    const randomTimestamp =
-      startOf2022.getTime() +
-      Math.random() * (endOf2022.getTime() - startOf2022.getTime());
+  //   // Generate a random timestamp within the range
+  //   const randomTimestamp =
+  //     startOf2022.getTime() +
+  //     Math.random() * (endOf2022.getTime() - startOf2022.getTime());
 
-    // Create a new Date object with the random timestamp
-    return new Date(randomTimestamp);
-  }
+  //   // Create a new Date object with the random timestamp
+  //   return new Date(randomTimestamp);
+  // }
 
   function getCurrentDateFormatted() {
     // Get the current date
-    // const now = new Date();
-    const now = getRandomDateIn2022();
+    const now = new Date();
+    // const now = getRandomDateIn2022();
 
     // Extract day, month, and year
     const day = String(now.getDate()).padStart(2, "0");
