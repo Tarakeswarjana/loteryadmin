@@ -34,7 +34,7 @@ const ThirdPrizeResult = ({ setLiveDraw, resultData, setPrizePosition }) => {
 
   return status ? (
     <div className="second_result">
-      <div className="bg-black h-[77vh] border-l-2 ">
+      <div className="bg-black h-[79vh] border-l-2 ">
         <div className="third_inner">
           {resultData &&
             resultData.map((endval, index) => {
