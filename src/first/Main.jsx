@@ -10,6 +10,7 @@ import { useLocation } from "react-router-dom";
 const beepSound = new Audio(
   require("../assets/piep-33489-[AudioTrimmer.com].mp3")
 );
+const countDown = new Audio(require("../assets/coundDown.mpeg"));
 
 const Main = () => {
   const location = useLocation();
@@ -26,7 +27,6 @@ const Main = () => {
   const [allTime, setAllTime] = useState([]);
   const [singleDrawTime, setSingleDrawTime] = useState("");
 
-
   console.log("locationData", data);
 
   const fetchSpinData = useCallback(async () => {
@@ -42,9 +42,9 @@ const Main = () => {
   }, []);
   const fetcallDrawTime = useCallback(async () => {
     try {
-      let res = await getAllTime()
+      let res = await getAllTime();
       if (res && res.status) {
-        setAllTime(res.data)
+        setAllTime(res.data);
       }
       console.log("timess", res);
     } catch (error) {
@@ -54,10 +54,10 @@ const Main = () => {
 
   const fetcSingleDrawTime = useCallback(async () => {
     try {
-      let res = await getSingleTime(data.game_name)
+      let res = await getSingleTime(data.game_name);
       if (res && res.status) {
-        console.log(res, "88888")
-        setSingleDrawTime(res.data[0].game_time)
+        console.log(res, "88888");
+        setSingleDrawTime(res.data[0].game_time);
       }
       console.log("timess", res);
     } catch (error) {
@@ -67,45 +67,48 @@ const Main = () => {
 
   useEffect(() => {
     fetchSpinData();
-    fetcallDrawTime()
-    fetcSingleDrawTime()
+    fetcallDrawTime();
+    fetcSingleDrawTime();
   }, [fetcSingleDrawTime, fetchSpinData]);
 
   useEffect(() => {
     if (!home) {
-      // Decrement the count at a 1.5-second interval
+      // Decrement the count at a 1.2-second interval
       const interval = setInterval(() => {
         setCount((prevCount) => {
-          if (prevCount > 1) {
+          if (prevCount > 0) {
+            countDown.play();
             return prevCount - 1;
-          } else if (prevCount === 1) {
-            beepSound.play(); // Play sound when count reaches 0
-            clearInterval(interval);
+          } else if (prevCount === 0) {
+            beepSound.play(); // Play the beep sound when count reaches 0
+            countDown.pause(); // Pause countdown audio
+            clearInterval(interval); // Clear the interval
             return 0;
           } else {
             clearInterval(interval);
             return 0;
           }
         });
-      }, 1500);
-
+      }, 1200);
+  
       const fallingText = setTimeout(() => {
         setfallingText(true);
       }, 7000);
-
+  
       const changeColor = setTimeout(() => {
         setColor(true);
       }, 12500);
-
+  
       const Blink = setTimeout(() => {
         setBlink(true);
       }, 13000);
-
+  
       const changeState = setTimeout(() => {
         setStatus(true);
-        beepSound.pause();
-      }, [19000]);
-
+        beepSound.pause(); // Pause beep sound if still playing
+        countDown.pause(); // Ensure countdown audio is paused
+      }, 19000);
+  
       return () => {
         clearInterval(interval);
         clearTimeout(fallingText);
@@ -115,7 +118,8 @@ const Main = () => {
       };
     }
   }, [home]);
-
+  
+  
   // Format count to always display two digits
   const formattedCount = String(count).padStart(2, "0");
 
@@ -150,7 +154,12 @@ const Main = () => {
           <div class="draw">
             <img src={middle} alt="middle" />
             <h2 className="draw_text1">Hongkong lotteries</h2>
-            <h3 className="draw_text2">DRAW TIME {allTime.map((ele, id) => { return `${ele.game_time},` })} </h3>
+            <h3 className="draw_text2">
+              DRAW TIME{" "}
+              {allTime.map((ele, id) => {
+                return `${ele.game_time},`;
+              })}{" "}
+            </h3>
           </div>
         </div>
         <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-56 h-[56px] top_right_uTube">
@@ -198,8 +207,9 @@ const Main = () => {
             <div className="fall_blink_text ">
               <h4 className="text-9xl font-extrabold mt-8 mb-8 blink_text ">
                 <div
-                  className={`word ${fallingText ? "block" : "hidden"} ${color ? "colorChange" : ""
-                    } ${blink ? "blink" : ""}`}
+                  className={`word ${fallingText ? "block" : "hidden"} ${
+                    color ? "colorChange" : ""
+                  } ${blink ? "blink" : ""}`}
                 >
                   <span>P</span>
                   <span>X</span>
@@ -216,8 +226,9 @@ const Main = () => {
                 className={`h-[81px] w-24 bg-white text-black text-7xl count_number`}
               >
                 <span
-                  className={`${formattedCount === "00" ? (blink ? "blink" : "") : ""
-                    }`}
+                  className={`${
+                    formattedCount === "00" ? (blink ? "blink" : "") : ""
+                  }`}
                 >
                   00
                 </span>
@@ -226,8 +237,9 @@ const Main = () => {
                 className={`h-[81px] w-24 bg-white text-black text-7xl ml-2 count_number`}
               >
                 <span
-                  className={`${formattedCount === "00" ? (blink ? "blink" : "") : ""
-                    }`}
+                  className={`${
+                    formattedCount === "00" ? (blink ? "blink" : "") : ""
+                  }`}
                 >
                   {formattedCount}
                 </span>
@@ -298,8 +310,7 @@ const Main = () => {
         </div>
         <div className="pt-1 pb-1 flex justify-center align-center bg-black rounded rounded-full w-56 h-12 draw_date_time">
           <p className="w-full flex justify-center items-center bg-red-700 text-white rounded rounded-full font-bold">
-            DRAW TIME -{" "}
-            {singleDrawTime}
+            DRAW TIME - {singleDrawTime}
           </p>
         </div>
       </div>
