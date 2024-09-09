@@ -5,11 +5,25 @@ function Sidebar({ isOpen, setIsOpen }) {
     <>
       <aside
         id="sidebar-multi-level-sidebar"
-        class="left-0 z-40 h-screen"
+        className={`left-0 z-40 h-screen ${
+          isOpen ? "sidebar_full" : "sidebar_half"
+        }  md:sidebar_full`}
         aria-label="Sidebar"
-        style={{ width: isOpen ? "12rem" : "3rem" }}
+        // style={{ width: isOpen ? "12rem" : "3rem" }}
       >
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+          <p
+            onClick={() => {
+              setIsOpen(!isOpen);
+            }}
+            className={`cursor-pointer px-4 py-2 font-semibold rounded-md transition-colors duration-300 float-right`}
+          >
+            {isOpen ? (
+              <i class="fa-solid fa-bars"></i>
+            ) : (
+              <i class="fa-solid fa-bars"></i>
+            )}
+          </p>
           <ul class="space-y-2 font-medium">
             <li>
               <p
@@ -26,7 +40,10 @@ function Sidebar({ isOpen, setIsOpen }) {
                   <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
                   <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
                 </svg>
-                <span class="ms-3" style={{ display: isOpen ? "block" : "none" }}>
+                <span
+                  class="ms-3"
+                  style={{ display: isOpen ? "block" : "none" }}
+                >
                   Dashboard
                 </span>
               </p>

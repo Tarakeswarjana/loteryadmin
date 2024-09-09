@@ -30,61 +30,90 @@ function Category({ gameTime }) {
   // const [totalrowCount, setTotalRow] = useState(true);
   const navigate = useNavigate();
 
-  //table row and collumn
+  //table row and collumn9---
   const columns = [
     {
       name: "Id",
       selector: (row) => row.sl,
-      // style: {
-      //   backgroundColor: 'rgba(63, 195, 128, 0.9)',
-      //   maxWidth: "10px",
-      //   color: 'white',
-      // }
+      style: {
+        flexGrow: 0,
+        flexShrink: 1,
+        flexBasis: "100px",
+        maxWidth: "100px",
+        minWidth: "100px",
+      },
+      wrap: true,
     },
-
     {
       name: "Game_date",
       selector: (row) => row.game_date,
-      // style: {
-
-      //   maxWidth: "40px",
-
-      // }
+      style: {
+        flexGrow: 0,
+        flexShrink: 1,
+        flexBasis: "200px",
+        maxWidth: "200px",
+        minWidth: "200px",
+      },
+      wrap: true,
     },
     {
       name: "Game_name",
       selector: (row) => row.game_name,
+      style: {
+        flexGrow: 0,
+        flexShrink: 1,
+        flexBasis: "150px",
+        maxWidth: "150px",
+        minWidth: "150px",
+      },
+      wrap: true,
     },
     {
       name: "Result_value",
       selector: (row) => row.result_value,
+      style: {
+        flexGrow: 0,
+        flexShrink: 1,
+        flexBasis: '80px',
+        maxWidth: '80px',
+        minWidth: '80px',
+      },
+      wrap: true,
     },
 
     {
       name: "First Digit",
       selector: (row) => row.first_digit,
+      style: {
+        flexGrow: 0,
+        flexShrink: 1,
+        flexBasis: '80px',
+        maxWidth: '80px',
+        minWidth: '80px',
+      },
+      wrap: true,
     },
-
-
-
-
-
     {
       name: "Second Digit",
       selector: (row) => row.second_digit,
+      style: {
+        flexGrow: 0,
+        flexShrink: 1,
+        flexBasis: '80px',
+        maxWidth: '80px',
+        minWidth: '80px',
+      },
+      wrap: true,
     },
     {
       name: "Live Url",
       selector: (row) => {
-        console.log("noon", row)
+        console.log("noon", row);
         return (
           <div className="w-[400px] overflow-scroll">
-
             <button
               onClick={(e) => {
                 navigate(`/liveurl/${row.game_name}`, { state: { row } });
-                // handleEdit(row.sl)
-                // console.log("RowData:", row);
               }}
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 ml-1 rounded"
             >
@@ -93,12 +122,20 @@ function Category({ gameTime }) {
           </div>
         );
       },
+      style: {
+        flexGrow: 0,
+        flexShrink: 1,
+        flexBasis: "120px",
+        maxWidth: "120px",
+        minWidth: "120px",
+      },
+      wrap: true,
     },
 
     {
       name: "Action",
       selector: (row) => {
-        console.log("noon", row)
+        console.log("noon", row);
         return (
           <div className="w-[400px] overflow-scroll">
             <button
@@ -112,8 +149,6 @@ function Category({ gameTime }) {
             <button
               onClick={(e) => {
                 navigate(`/frontendView/${row.game_name}`, { state: { row } });
-                // handleEdit(row.sl)
-                // console.log("RowData:", row);
               }}
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 ml-1 rounded"
             >
@@ -286,7 +321,7 @@ function Category({ gameTime }) {
 
       if (res) {
         const newArr = res?.map((ele, id) => {
-          console.log("ele", ele)
+          console.log("ele", ele);
           return {
             sl: id + 1,
             game_date: ele?.game_date,
@@ -297,7 +332,6 @@ function Category({ gameTime }) {
             type: ele?.type,
             id: ele?.id,
             spin_time: ele?.spin_time,
-
           };
         });
         setCategoryData(newArr);
@@ -327,8 +361,6 @@ function Category({ gameTime }) {
             >
               Add new Category
             </button>
-
-
           </div>
           {/* <form class="flex justify-between items-center gap-1 w-800 mx-auto p-1 border border-gray-300 rounded-lg shadow-md">
             <div className="flex gap-4">
@@ -363,13 +395,14 @@ function Category({ gameTime }) {
             columns={columns}
             data={categorydata}
             pagination
+            responsive={true}
 
-          // progressPending={isLoading}
+            // progressPending={isLoading}
 
-          // paginationServer
-          // paginationTotalRows={totalrowCount}
-          // onChangePage={fetchAllCategory}
-          // noRowsPerPage={true}
+            // paginationServer
+            // paginationTotalRows={totalrowCount}
+            // onChangePage={fetchAllCategory}
+            // noRowsPerPage={true}
           />
         </div>
 

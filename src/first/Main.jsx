@@ -104,7 +104,7 @@ const Main = () => {
       }, 13000);
   
       const changeState = setTimeout(() => {
-        setStatus(true);
+        // setStatus(true);
         beepSound.pause(); // Pause beep sound if still playing
         countDown.pause(); // Ensure countdown audio is paused
       }, 19000);

@@ -9,23 +9,11 @@ function Header({ isOpen, setIsOpen }) {
   return (
     <>
       <nav
-        class="justify-between px-4 py-[8px] z-10 text-gray-700 border border-gray-200 rounded-lg sm:flex sm:px-5 bg-gray-50 dark:bg-gray-800 dark:border-gray-700 fixed w-[100%] h-[50px]"
+        class="flex justify-end px-4 py-[8px] z-10 text-gray-700 border border-gray-200 rounded-lg sm:flex sm:px-5 bg-gray-50 dark:bg-gray-800 dark:border-gray-700 fixed w-[83vw] h-[50px]"
         aria-label="Breadcrumb"
       >
-        <p
-          onClick={() => {
-            setIsOpen(!isOpen);
-          }}
-          className={`cursor-pointer px-4 py-2 font-semibold rounded-md transition-colors duration-300 `}
-        >
-          {isOpen ? (
-            <i class="fa-solid fa-bars"></i>
-          ) : (
-            <i class="fa-solid fa-bars"></i>
-          )}
-        </p>
         <div
-          className="relative left-[68rem]"
+          className=""
           onClick={() => setisProfileopen(!isProfileopen)}
         >
           <button

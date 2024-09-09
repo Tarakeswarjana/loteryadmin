@@ -314,6 +314,53 @@
 }
 
 /*========== for mobile landscape mode responsive css ===============*/
+@media only screen and (max-width: 659px) and (orientation: landscape) {
+  .home_text {
+    font-size: 35px;
+    -webkit-text-stroke: 0.8px white;
+  }
+  .home_text p:nth-child(3) {
+    font-size: 65px;
+  }
+  .top_left {
+    font-size: 7px;
+  }
+  .top_left_uTube {
+    height: 33px !important;
+  }
+  .top_right_uTube {
+    height: 33px !important;
+    text-align: center;
+  }
+  .draw img {
+    width: 550px;
+    height: 40px;
+  }
+  .main_div_second {
+    margin-top: 6px;
+  }
+  .draw_text1 {
+    bottom: 17px;
+    font-size: 12px;
+    letter-spacing: 3px;
+  }
+  .draw_text2 {
+    bottom: 6px;
+    font-size: 6px;
+  }
+  .first {
+    top: 9px;
+  }
+  .first img {
+    height: 26px;
+    width: 50px;
+  }
+  .pri h2 {
+    top: 15%;
+    font-size: 30px;
+  }
+}
+
 @media only screen and (min-width: 660px) and (max-width: 932px) and (orientation: landscape) {
   .home_text {
     font-size: 38px;

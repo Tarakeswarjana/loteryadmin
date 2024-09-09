@@ -76,35 +76,14 @@
   font-weight: 700;
   color: #fff;
 }
-/* .curve_pxwell {
-  position: absolute;
-  display: flex;
-  clip-path: polygon(
-    49% 51%,
-    81% 49%,
-    100% 35%,
-    92% 63%,
-    75% 64%,
-    51% 63%,
-    30% 63%,
-    7% 60%,
-    0% 35%,
-    26% 45%
-  );
-  background: aquamarine;
-  height: 99px;
-  width: 100%;
-  top: 4px;
-} */
+
 .prize {
   background-color: #ec1300;
   width: 111%;
   height: 99%;
   border-radius: 50%;
   border: 3px solid #fff;
-  /* margin: 0px 76px; */
   position: relative;
-
 }
 
 .first {
@@ -118,22 +97,23 @@
 }
 .prize_number {
   position: absolute;
-    margin-bottom: 4px;
-    font-size: 39px;
-    font-weight: 900;
+  margin-bottom: 4px;
+  font-size: 39px;
+  font-weight: 900;
 }
-.pri, .digit {
+.pri,
+.digit {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* .text{
-  position: absolute;
-  bottom: 39%;
-  right: 405px;
-
-} */
+.sidebar_full {
+  width: 12rem;
+}
+.sidebar_half {
+  width: 3rem;
+}
 .prize_text h4 {
   font-size: 44px;
   font-weight: 700;
@@ -507,4 +487,12 @@
   /* width: 50%; */
   display: flex;
   padding: 4px 1px;
+}
+
+/********************* table.css *****************/
+.hZUxNm {
+  font-size: 16px;
+}
+.dVFlIL {
+  width: 80% !important;
 }
