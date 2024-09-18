@@ -349,15 +349,83 @@
     font-size: 6px;
   }
   .first {
-    top: 9px;
+    top: 13px;
   }
   .first img {
-    height: 26px;
-    width: 50px;
+    height: 30px;
+    width: 38px;
   }
   .pri h2 {
-    top: 15%;
-    font-size: 30px;
+    top: 18%;
+    font-size: 26px;
+  }
+  .digit h3 {
+    top: 36%;
+    font-size: 15px;
+    -webkit-text-stroke: 0.3px white;
+  }
+  .prize_number {
+    margin-bottom: 0px;
+    font-size: 20px;
+  }
+  .main_middle {
+    height: 70%;
+    margin-top: 0;
+  }
+  .bottom_div {
+    margin: 3px 0px;
+  }
+  .draw_date_time {
+    height: 33px;
+  }
+  .bottom_logo {
+    height: 28px;
+    width: 40px;
+  }
+  .number_main_div {
+    margin-bottom: 10px;
+  }
+  .prize {
+    width: 98%;
+    margin-left: 2px;
+  }
+  .middle_text_area {
+    width: 100%;
+  }
+  .okk,
+  .letter_okk {
+    width: 85px;
+    height: 85px;
+  }
+  .spin_top_line {
+    width: 87%;
+  }
+  .circle,
+  .letter-circle {
+    width: 85px;
+    height: 85px;
+    margin: 12px 17px;
+  }
+  .logo_container img {
+    margin-left: 57px;
+  }
+  .arrow, .letter_Arrow  {
+    left: 37%
+  }
+  .circle_hr {
+    left: 35%;
+  }
+  .text, .letter-text {
+    font-size: 10px;
+  }
+  .slot_main_div  {
+    padding: 3px;
+  }
+  .slot_machine_top {
+    height: 70px;
+  }
+  .bg_gray_div {
+    height: 38px;
   }
 }
 
