@@ -16,9 +16,6 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw, setPrizePositio
   const letterWheelRef = useRef(null);
   const digitsRef = useRef(null);
 
-  // const duration = 2;
-  console.log("no", no, letter, digits)
-
   useEffect(() => {
     setInputValueNumber(no);
     setInputValueLetter(letter);
@@ -26,23 +23,23 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw, setPrizePositio
 
     // Zoom after 8 seconds
     const zoomTimer = setTimeout(() => {
-      // setZoomed("zoomed");
+      setZoomed("zoomed");
     }, 7000);
 
     const scrollLettersTimer = setTimeout(() => {
       if (letterWheelRef.current) {
-        // letterWheelRef.current.scrollIntoView({ behavior: "smooth" });
+        letterWheelRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }, 16500);
 
     const digitsTimer = setTimeout(() => {
       if (digitsRef.current) {
-        // digitsRef.current.scrollIntoView({ behavior: "smooth" });
+        digitsRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }, 18000);
 
     const changeState = setTimeout(() => {
-      // setStatus(false);
+      setStatus(false);
     }, 24000);
 
     return () => {

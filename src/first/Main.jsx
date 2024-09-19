@@ -247,7 +247,7 @@ const Main = () => {
             </div>
           </div>
         ) : (
-          <div className="w-[74vw] border border-2 overflow-hidden relative">
+          <div className="w-[74vw] border border-2 overflow-hidden relative wheel_main_section">
             <CustomWheel2
               no={resultData?.pre_digit}
               letter={resultData.series}

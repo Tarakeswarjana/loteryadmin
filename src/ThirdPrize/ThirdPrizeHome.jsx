@@ -68,7 +68,7 @@ const ThirdPrizeHome = ({setLiveDraw, setPrizePosition}) => {
   }, []);
   return status ? (
     <div className="bg-black fixed inset-0 z-10">
-      <div className="flex flex-col  w-[52%] h-[100vh] mx-auto text-center">
+      <div className="flex flex-col  w-[52%] h-[100vh] mx-auto text-center third_main_div">
         <div className="typing_text_2_main_div">
           <ul className={textType ? "dynamik_text2" : "hidden"}>
             <li>

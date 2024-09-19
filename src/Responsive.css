@@ -211,10 +211,8 @@
   }
 
   /*---------  second page css ------------*/
-  .second_main_div {
+  .second_main_div, .third_main_div {
     width: 100%;
-    /* display: flex;
-    justify-content: center; */
   }
   .typing_text_2_main_div {
     font-size: 95px;
@@ -352,21 +350,21 @@
     top: 13px;
   }
   .first img {
-    height: 30px;
-    width: 38px;
+    height: 26px;
+    width: 30px;
   }
   .pri h2 {
-    top: 18%;
-    font-size: 26px;
+    top: 21%;
+    font-size: 22px;
   }
   .digit h3 {
-    top: 36%;
-    font-size: 15px;
-    -webkit-text-stroke: 0.3px white;
+    top: 42%;
+    font-size: 12px;
+    -webkit-text-stroke: 0.1px white;
   }
   .prize_number {
-    margin-bottom: 0px;
-    font-size: 20px;
+    margin-bottom: 2px;
+    font-size: 13px;
   }
   .main_middle {
     height: 70%;
@@ -386,7 +384,7 @@
     margin-bottom: 10px;
   }
   .prize {
-    width: 98%;
+    width: 90%;
     margin-left: 2px;
   }
   .middle_text_area {
@@ -409,23 +407,106 @@
   .logo_container img {
     margin-left: 57px;
   }
-  .arrow, .letter_Arrow  {
-    left: 37%
+  .arrow,
+  .letter_Arrow {
+    left: 32%;
   }
   .circle_hr {
-    left: 35%;
+    left: 30%;
   }
-  .text, .letter-text {
+  .text,
+  .letter-text {
     font-size: 10px;
   }
-  .slot_main_div  {
+  .slot_main_div {
     padding: 3px;
+    width: 82%;
   }
   .slot_machine_top {
-    height: 70px;
+    height: 40px;
   }
   .bg_gray_div {
-    height: 38px;
+    height: 20px;
+  }
+
+  .index-module_num__j6XH3 {
+    height: 26px;
+    line-height: 20px;
+    font-size: 8px;
+  }
+
+  .index-module_slot__DpPgW {
+    height: 17px !important;
+    vertical-align: baseline;
+  }
+
+  .arrow,
+  .letter_Arrow {
+    border-top: 19px solid red;
+  }
+  .text,
+  .letter-text {
+    font-size: 8px;
+  }
+  .slot_machine_top {
+    width: 100%;
+  }
+  .typing_text_2_main_div {
+    font-size: 50px;
+  }
+  .nextDraw {
+    height: 150px;
+  }
+  .number {
+    font-size: 50px;
+  }
+  .nd {
+    font-size: 45px;
+  }
+  .secoundPrizeNo {
+    font-size: 45px;
+  }
+  .live_draw {
+    font-size: 1.2rem;
+  }
+  .pxwell_main {
+    font-size: 1.2rem;
+  }
+  .pxwell {
+    -webkit-text-stroke: 1.2px #fff;
+  }
+  .live_draw_main {
+    width: 33px;
+  }
+  .oval_div {
+    width: 100px;
+  }
+  .main_middle_second {
+    width: 30px;
+  }
+  .wheel_main_section {
+    width: 87vw;
+  }
+  .digits_dot {
+    font-size: 5px;
+  }
+  .index-module_slot_wrap__ZT-DX :nth-child(2),
+  .index-module_slot_wrap__ZT-DX :nth-child(3),
+  .index-module_slot_wrap__ZT-DX :nth-child(4),
+  .index-module_slot_wrap__ZT-DX :nth-child(5) {
+    margin-left: 2px;
+  }
+  .second_inner {
+    width: 53%;
+  }
+  .slot_machines_third  {
+    padding: 2px;
+  }
+  .slot_machines_fourth  {
+    padding: 2px;
+  }
+  .slot_component {
+    width: 57%;
   }
 }
 
@@ -575,19 +656,18 @@
   /*********** slot machine ***************/
   .slot_machines,
   .slot_machines_third {
-    padding: 1px;
+    padding: 2px;
   }
   .slot_machines_fourth {
     padding: 2px;
+    width: 25%;
   }
   .slot_main_div {
     padding: 3px;
   }
   .slot_machine_top {
-    /* width: 176px; */
-    /* height: 77px; */
-    width: 166px;
-    height: 58px;
+    height: 53px;
+    width: 163px;
   }
   .index-module_slot__DpPgW {
     height: 35px;
