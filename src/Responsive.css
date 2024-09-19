@@ -646,6 +646,7 @@
   .logo_container {
     transform: skewY(60deg) rotate(-6deg);
     padding-top: 15px;
+    
   }
   .logo_container img {
     margin-left: 46px;
