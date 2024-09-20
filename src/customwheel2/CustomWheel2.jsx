@@ -11,6 +11,7 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw, setPrizePositio
   const [inputValueNumber, setInputValueNumber] = useState("");
   const [inputValueLetter, setInputValueLetter] = useState("");
   const [zoomed, setZoomed] = useState("");
+  const [slotWidth, setSlotWidth] = useState(false)
   const [endval, setEndval] = useState(null);
   const [status, setStatus] = useState(true);
   const letterWheelRef = useRef(null);
@@ -20,6 +21,7 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw, setPrizePositio
     setInputValueNumber(no);
     setInputValueLetter(letter);
     setEndval(digits);
+    setSlotWidth(true)
 
     // Zoom after 8 seconds
     const zoomTimer = setTimeout(() => {
@@ -194,13 +196,13 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw, setPrizePositio
             </ul>
           </div>
         </div>
-        <div className="w-[35px] h-full bg-black ml-[-20px] black_border"></div>
+        <div className="w-[20px] h-full bg-gray-300 ml-[-20px] black_border"></div>
 
         <div
           className="bg-black h-auto w-[72%] border-l-2 slot_component"
           ref={digitsRef}
         >
-          <SlotMechine duration={15} endNumbers={endval} setvalueStart rotate />
+          <SlotMechine duration={15} endNumbers={endval} setvalueStart rotate slotWidth={slotWidth} />
         </div>
       </div>
 

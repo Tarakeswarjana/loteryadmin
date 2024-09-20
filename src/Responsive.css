@@ -367,14 +367,14 @@
     font-size: 13px;
   }
   .main_middle {
-    height: 70%;
+    height: 72%;
     margin-top: 0;
   }
   .bottom_div {
     margin: 3px 0px;
   }
   .draw_date_time {
-    height: 33px;
+    height: 26px;
   }
   .bottom_logo {
     height: 28px;
@@ -402,17 +402,17 @@
   .letter-circle {
     width: 85px;
     height: 85px;
-    margin: 12px 17px;
+    margin: 12px 24px;
   }
   .logo_container img {
     margin-left: 57px;
   }
   .arrow,
   .letter_Arrow {
-    left: 32%;
+    left: 37%;
   }
   .circle_hr {
-    left: 30%;
+    left: 35.5%;
   }
   .text,
   .letter-text {
@@ -508,6 +508,22 @@
   .slot_component {
     width: 57%;
   }
+  .okk, .letter_okk {
+    margin: 2.5px auto;
+  }
+  .circle, .letter-circle {
+    width: 90px;
+    height: 90px;
+}
+}
+
+@media only screen and (min-width: 568px) and (max-width: 585px) and (orientation: landscape) {
+  .main_spin {
+    width: 40% !important;
+  }
+  .slot_component {
+    width: 65%;
+}
 }
 
 @media only screen and (min-width: 660px) and (max-width: 932px) and (orientation: landscape) {
