@@ -22,7 +22,6 @@ function CustomWheel2({ no, letter, digits, rotate, setLiveDraw, setPrizePositio
     setInputValueLetter(letter);
     setEndval(digits);
     setSlotWidth(true)
-
     // Zoom after 8 seconds
     const zoomTimer = setTimeout(() => {
       setZoomed("zoomed");
