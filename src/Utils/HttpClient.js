@@ -20,8 +20,7 @@ function deletemethod(endpoint, params) {
 }
 
 async function requestData(url, data = {}, method = "GET") {
-    // Define the base URL and initialize headers
-    // const BASE_URL = 'https://example.com'; // Replace with your base URL
+
     const headers = new Headers();
     let options = { method, headers };
 

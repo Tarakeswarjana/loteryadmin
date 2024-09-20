@@ -5,7 +5,7 @@ import { getFourthResultData } from "../Utils/AllApiCals";
 
 const FourthPrizeHome = ({ setLiveDraw, setPrizePosition }) => {
   const [textType, setTextType] = useState(false);
-  const [textFall, setTextFall] = useState(false);
+  const [textFall, setTextFall] = useState(false)
   const [showLine, setShowLine] = useState(false);
   const [blink, setBlink] = useState(false);
   const [bottomText, setBottomText] = useState(false);
