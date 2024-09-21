@@ -2,9 +2,9 @@ import React, { useState, useRef, useEffect, useCallback } from "react";
 import "./slotMechine.css"; // Make sure to include the CSS here
 import SlotCounter from "react-slot-counter";
 // const audio = require("../../src/assets/wheel-spin-click-slow-down-101152.mp3");
-const SlotMechine = ({ duration, endNumbers, rotate, fourth }) => {
+const SlotMechine = ({ duration, endNumbers, rotate, fourth, slotWidth }) => {
   const [isspinn, setisSpinn] = useState(false);
-console.log("fourth",fourth)
+  console.log("slotWidth", slotWidth);
   const counterRef = useRef(null);
 
   const startAnimation = useCallback(() => {
@@ -36,7 +36,11 @@ console.log("fourth",fourth)
   return (
     <>
       <div className="h-1 bg-white"></div>
-      <div className={`h-[90px] ${fourth ? "w-[249px]" : "w-[290px]"} bg-white flex flex-col justify-center item-center slot_machine_top`}>
+      <div
+        className={`h-[90px] ${fourth ? "w-[249px]" : "w-[290px]"} ${
+          slotWidth ? "w-[50%]" : "w-[100%]"
+        } bg-white flex flex-col justify-center item-center slot_machine_top`}
+      >
         <div className="digits_dot">
           <hr className="dot" />
           <span>PXWELL</span>
