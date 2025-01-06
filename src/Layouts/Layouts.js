@@ -6,7 +6,7 @@ import Login from '../Auth/Login';
 
 
 function Layout(props) {
-    const [isOpen, setIsOpen] = useState(true)
+    const [isOpen, setIsOpen] = useState(false)
     let tokenndata = localStorage.getItem('token')
     if (!tokenndata)
         return <Login />

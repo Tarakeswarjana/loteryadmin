@@ -48,9 +48,8 @@ function Header({ isOpen, setIsOpen }) {
             onClick={() => {
               navigate("/login");
             }}
-            class={`z-10 relative ${
-              isProfileopen ? "block" : "hidden"
-            } bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}
+            class={`z-10 relative ${isProfileopen ? "block" : "hidden"
+              } bg-white divide-y divide-gray-100 rounded-lg shadow w-30 dark:bg-gray-700`}
           >
             <ul
               class="py-2 text-sm text-gray-700 dark:text-gray-200"

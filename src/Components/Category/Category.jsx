@@ -11,6 +11,8 @@ import {
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import Loader from "../../Loader/Loader";
+import view from "../../assets/eye.png"
+import deleteicon from "../../assets/bin.png"
 
 const initialState = {
   DrawNo: "",
@@ -62,9 +64,7 @@ function Category({ gameTime }) {
       style: {
         flexGrow: 0,
         flexShrink: 1,
-        flexBasis: "150px",
-        maxWidth: "150px",
-        minWidth: "150px",
+
       },
       wrap: true,
     },
@@ -74,9 +74,7 @@ function Category({ gameTime }) {
       style: {
         flexGrow: 0,
         flexShrink: 1,
-        flexBasis: '80px',
-        maxWidth: '80px',
-        minWidth: '80px',
+
       },
       wrap: true,
     },
@@ -87,9 +85,7 @@ function Category({ gameTime }) {
       style: {
         flexGrow: 0,
         flexShrink: 1,
-        flexBasis: '80px',
-        maxWidth: '80px',
-        minWidth: '80px',
+
       },
       wrap: true,
     },
@@ -99,9 +95,7 @@ function Category({ gameTime }) {
       style: {
         flexGrow: 0,
         flexShrink: 1,
-        flexBasis: '80px',
-        maxWidth: '80px',
-        minWidth: '80px',
+
       },
       wrap: true,
     },
@@ -125,9 +119,7 @@ function Category({ gameTime }) {
       style: {
         flexGrow: 0,
         flexShrink: 1,
-        flexBasis: "120px",
-        maxWidth: "120px",
-        minWidth: "120px",
+
       },
       wrap: true,
     },
@@ -137,23 +129,24 @@ function Category({ gameTime }) {
       selector: (row) => {
         console.log("noon", row);
         return (
-          <div className="w-[400px] overflow-scroll">
+          <div className="flex overflow-scroll">
+
+
+
             <button
-              onClick={() => {
-                handleDelete(row.id);
-              }}
-              className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+              onClick={() => navigate(`/frontendView/${row.game_name}`, { state: { row } })}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              View
+            </button>
+            {/* Delete Button */}
+            <button
+              onClick={() => handleDelete(row.id)}
+              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
             >
               Delete
             </button>
-            <button
-              onClick={(e) => {
-                navigate(`/frontendView/${row.game_name}`, { state: { row } });
-              }}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 ml-1 rounded"
-            >
-              view
-            </button>
+
           </div>
         );
       },

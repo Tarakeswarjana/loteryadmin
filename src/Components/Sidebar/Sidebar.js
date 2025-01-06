@@ -1,15 +1,16 @@
 import React from "react";
 
 function Sidebar({ isOpen, setIsOpen }) {
+
+
   return (
     <>
       <aside
         id="sidebar-multi-level-sidebar"
-        className={`left-0 z-40 h-screen ${
-          isOpen ? "sidebar_full" : "sidebar_half"
-        }  md:sidebar_full`}
+        className={`left-0 z-40 h-screen ${isOpen ? "sidebar_full" : "sidebar_half"
+          }  md:sidebar_full`}
         aria-label="Sidebar"
-        // style={{ width: isOpen ? "12rem" : "3rem" }}
+      // style={{ width: isOpen ? "12rem" : "3rem" }}
       >
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
           <p
@@ -25,7 +26,7 @@ function Sidebar({ isOpen, setIsOpen }) {
             )}
           </p>
           <ul class="space-y-2 font-medium">
-            <li>
+            <li onClick={() => setIsOpen(false)}>
               <p
                 href="#"
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -49,7 +50,7 @@ function Sidebar({ isOpen, setIsOpen }) {
               </p>
             </li>
 
-            <li>
+            <li onClick={() => setIsOpen(false)}>
               <a
                 href="/morning"
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -66,7 +67,7 @@ function Sidebar({ isOpen, setIsOpen }) {
                 <span class="flex-1 ms-3 whitespace-nowrap">Morning Set</span>
               </a>
             </li>
-            <li>
+            <li onClick={() => setIsOpen(false)}>
               <a
                 href="/noon"
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -83,7 +84,7 @@ function Sidebar({ isOpen, setIsOpen }) {
                 <span class="flex-1 ms-3 whitespace-nowrap ">Noon Set</span>
               </a>
             </li>
-            <li>
+            <li onClick={() => setIsOpen(false)}>
               <a
                 href="/evening"
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -109,7 +110,7 @@ function Sidebar({ isOpen, setIsOpen }) {
                                 <span class="flex-1 ms-3 whitespace-nowrap">Sign In</span>
                             </a>
                         </li> */}
-            <li>
+            <li onClick={() => setIsOpen(false)}>
               <a
                 href="/login"
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import ThirdPrizeResult from "./ThirdPrizeResult";
 import { getSecoundThirdResult } from "../Utils/AllApiCals";
 import { useLocation } from "react-router-dom";
 
-const ThirdPrizeHome = ({setLiveDraw, setPrizePosition}) => {
+const ThirdPrizeHome = ({ setLiveDraw, setPrizePosition }) => {
   const [textType, setTextType] = useState(false);
   const [textFall, setTextFall] = useState(false);
   const [showLine, setShowLine] = useState(false);
@@ -14,7 +14,7 @@ const ThirdPrizeHome = ({setLiveDraw, setPrizePosition}) => {
   const location = useLocation();
   const data = location.state.row || {};
 
-  const fetchThirdResult = async () => {
+  const fetchThirdResult = useCallback(async () => {
     try {
       let res = await getSecoundThirdResult(data.game_date, data.game_name);
       if (res && res.status) {
@@ -25,11 +25,11 @@ const ThirdPrizeHome = ({setLiveDraw, setPrizePosition}) => {
     } catch (error) {
       console.log("errorrrrr", error);
     }
-  };
+  }, [data]);
 
   useEffect(() => {
     fetchThirdResult();
-  }, []);
+  }, [fetchThirdResult]);
 
 
   useEffect(() => {
@@ -68,7 +68,7 @@ const ThirdPrizeHome = ({setLiveDraw, setPrizePosition}) => {
   }, []);
   return status ? (
     <div className="bg-black fixed inset-0 z-10">
-      <div className="flex flex-col  w-[52%] h-[100vh] mx-auto text-center third_main_div">
+      <div className="flex flex-col  w-[52%] h-[100vh] mx-auto text-center">
         <div className="typing_text_2_main_div">
           <ul className={textType ? "dynamik_text2" : "hidden"}>
             <li>

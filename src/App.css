@@ -18,3 +18,22 @@
   margin: auto;
   padding: 30px;
 }
+
+@media (max-width: 1100px) {
+  .modelcss {
+    width: 80vw; /* Adjusted to viewport width */
+    height: 76vh; /* Retained as viewport height */
+  }
+  #dropdownDefault{
+    margin-right: 7rem;
+    position: fixed;
+    top: 1rem;
+    right: -6rem;
+  }
+  #dropdown{
+    position: fixed;
+    top: 50px;
+    right: 1rem;
+
+  }
+}
